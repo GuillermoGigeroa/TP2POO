@@ -12,43 +12,38 @@
 	|																																|
 	|	> PRESENTACIÓN:																												|
 	|		Es la encargada de la comunicación con el usuario. Presenta los datos y valida los datos ingresados por el usuario.		|
-	|	> NEGOCIO																													|
+	|	> NEGOCIO:																													|
 	|		Se encarga de hacer todas las operaciones llamando a los distintos accesos de datos, agrupando, validando y haciendo	|
 	|		de intermediario entre los datos y la presentación.																		|
-	|	> DATOS																														|
+	|	> DATOS:																														|
 	|		Se encarga de recibir datos para agregar, actualizar o eliminar en el sistema de persistencia y de obtener los datos	|
 	|		almacenados.																											|
-	|	> ENTIDADES																													|
+	|	> ENTIDADES:																													|
 	|		Son las clases que se encargan de transportar la información entre las capas. Son muy similares a las estructuras ya 	|
 	|		que poseen un comportamiento mínimo.																					|
 	|_______________________________________________________________________________________________________________________________|
 */
-Class Materias{
+class Materia_x_alumno{
 private:
 	int id_materia;
-	char nombre[50];
-	char profesor[50];
+	int legajo;
 	bool eliminado;
 public:
 	//SETTERS
 	void setId_materia(int ID){id_materia = ID;}
-	void setNombre(char *esteNombre){strcpy(nombre,estenombre);}
-	void setProfesor(char *esteProfesor){strcpy(nombre,esteProfesor);}
+	void setLegajo(int legajo){this->legajo = legajo;}
 	void setEliminado(bool eliminado){this->eliminado = eliminado;}
 	//GETTERS
 	int getId_materia(){return id_materia;}
-	char *getNombre(){return nombre;}
-	char *getProfesor(){return profesor;}
+	int getLegajo(){return legajo;}
 	bool getEliminado(){return eliminado;}
 	//FUNCIONES PARA EL ABM
-	void altaMateria();
-	void bajaMateria();
-	void modificarMateria();
-	/*
-		Listado de materias realizando una búsqueda por nombre de materia. La búsqueda no
-		tiene que ser key sensitive y debe buscar por una subcadena. La visualización debe
-		hacerse en formato de tabla
-	*/
-	//FUNCION PARA LISTAR CON BUSQUEDA POR NOMBRE
-	void listarMaterias(char *estaMateria);
+	void altaMXA();
+	void bajaMXA();
+	void modificarMXA();
+	//FUNCIONES LISTAR
+	void listadoAlumnosPorMateria();
+	void listadoMateriasPorAlumno();
+	//FUNCIONES PARA DAR DE BAJA A UN ALUMNO
+	void bajaAlumnoDeMateria();
 };

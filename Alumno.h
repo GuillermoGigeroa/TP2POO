@@ -1,4 +1,4 @@
-//ABM DE MATERIAS
+//ABM DE ALUMNOS
 #include <cstring>
 /*
 	 _______________________________________________________________________________________________________________________________
@@ -12,46 +12,44 @@
 	|																																|
 	|	> PRESENTACIÓN:																												|
 	|		Es la encargada de la comunicación con el usuario. Presenta los datos y valida los datos ingresados por el usuario.		|
-	|	> NEGOCIO																													|
+	|	> NEGOCIO:																													|
 	|		Se encarga de hacer todas las operaciones llamando a los distintos accesos de datos, agrupando, validando y haciendo	|
 	|		de intermediario entre los datos y la presentación.																		|
-	|	> DATOS																														|
+	|	> DATOS:																														|
 	|		Se encarga de recibir datos para agregar, actualizar o eliminar en el sistema de persistencia y de obtener los datos	|
 	|		almacenados.																											|
-	|	> ENTIDADES																													|
+	|	> ENTIDADES:																													|
 	|		Son las clases que se encargan de transportar la información entre las capas. Son muy similares a las estructuras ya 	|
 	|		que poseen un comportamiento mínimo.																					|
 	|_______________________________________________________________________________________________________________________________|
 */
-Class Materias_x_alumno{
+class Alumno{
 private:
-	int id_materia;
 	int legajo;
+	char nombre[50];
+	int dia_nac;
+	int mes_nac;
+	int anio_nac;
 	bool eliminado;
 public:
 	//SETTERS
-	void setId_materia(int ID){id_materia = ID;}
 	void setLegajo(int legajo){this->legajo = legajo;}
+	void setNombre(char *nombre);
+	void setDia(int dia){dia_nac = dia;}
+	void setMes(int mes){mes_nac = mes;}
+	void setAnio(int anio){anio_nac = anio;}
 	void setEliminado(bool eliminado){this->eliminado = eliminado;}
 	//GETTERS
-	int getId_materia(){return id_materia;}
 	int getLegajo(){return legajo;}
-	bool getEliminado(){return eliminado;}
+	char *getNombre(){return nombre;}
+	int getDia(){return dia_nac;}
+	int getMes(){return mes_nac;}
+	int getAnio(){return anio_nac;}
+	int getEliminado(){return eliminado;}
 	//FUNCIONES PARA EL ABM
-	void altaMXA();
-	void bajaMXA();
-	void modificarMXA();
-	//FUNCIONES LISTAR
-	/*
-		Listado de alumnos por materia. Debe mostrar el nombre de los alumnos, el legajo y el
-		nombre de la materia en formato de tabla.
-	*/
-	void listadoAlumnosPorMateria();
-	/*
-		Listado de materias por alumnos. Debe mostrar el nombre de las materias, el profesor y
-		el nombre del alumno en formato de tabla.
-	*/
-	void listadoMateriasPorAlumno();
-	//FUNCIONES PARA DAR DE BAJA A UN ALUMNO
-	void bajaAlumnoDeMateria;
+	void altaAlumno();
+	void bajaAlumno();
+	void modificarAlumno();
+	//FUNCION PARA LISTAR CON BUSQUEDA POR NOMBRE
+	void listarMaterias(char *estaMateria);
 };
