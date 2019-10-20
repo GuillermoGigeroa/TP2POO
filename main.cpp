@@ -1,13 +1,11 @@
 #include <iostream>
-#include "Alumno.h"
-#include "Materia.h"
-#include "Materia_x_alumno.h"
+#include "Negocio.h"
+#include "Presentacion.h"
+#include "Datos.h"
+#include "Entidad.h"
 using namespace std;
 
 int main(){
-	Alumno alumno;
-	Materia materia;
-	Materia_x_alumno mxa;
-	
+
 	return 0;
 }

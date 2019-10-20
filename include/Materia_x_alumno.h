@@ -1,3 +1,6 @@
+#ifndef MATERIA_X_ALUMNO_H
+#define MATERIA_X_ALUMNO_H
+
 //ABM DE MATERIAS
 #include <cstring>
 /*
@@ -23,27 +26,29 @@
 	|		que poseen un comportamiento mínimo.																					|
 	|_______________________________________________________________________________________________________________________________|
 */
-class Materia{
+class Materia_x_alumno{
 private:
 	int id_materia;
-	char nombre[50];
-	char profesor[50];
+	int legajo;
 	bool eliminado;
 public:
 	//SETTERS
 	void setId_materia(int ID){id_materia = ID;}
-	void setNombre(char *esteNombre);
-	void setProfesor(char *esteProfesor);
+	void setLegajo(int legajo){this->legajo = legajo;}
 	void setEliminado(bool eliminado){this->eliminado = eliminado;}
 	//GETTERS
 	int getId_materia(){return id_materia;}
-	char *getNombre(){return nombre;}
-	char *getProfesor(){return profesor;}
+	int getLegajo(){return legajo;}
 	bool getEliminado(){return eliminado;}
 	//FUNCIONES PARA EL ABM
-	void altaMateria();
-	void bajaMateria();
-	void modificarMateria();
-	//FUNCION PARA LISTAR CON BUSQUEDA POR NOMBRE
-	void listarMaterias(char *estaMateria);
+	void altaMXA();
+	void bajaMXA();
+	void modificarMXA();
+	//FUNCIONES LISTAR
+	void listadoAlumnosPorMateria();
+	void listadoMateriasPorAlumno();
+	//FUNCIONES PARA DAR DE BAJA A UN ALUMNO
+	void bajaAlumnoDeMateria();
 };
+
+#endif //MATERIA_X_ALUMNO_H
