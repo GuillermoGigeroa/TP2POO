@@ -14,6 +14,11 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="include" />
+					<Add directory="Alumnos/include" />
+					<Add directory="Alumnos" />
+					<Add directory="Materias" />
+					<Add directory="Materias_x_alumno" />
+					<Add directory="Capas" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -24,6 +29,11 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add directory="include" />
+					<Add directory="Alumnos/include" />
+					<Add directory="Alumnos" />
+					<Add directory="Materias" />
+					<Add directory="Materias_x_alumno" />
+					<Add directory="Capas" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -34,21 +44,26 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="include/Alumno.h" />
-		<Unit filename="include/Datos.h" />
-		<Unit filename="include/Entidad.h" />
-		<Unit filename="include/Materia.h" />
-		<Unit filename="include/Materia_x_alumno.h" />
-		<Unit filename="include/Negocio.h" />
-		<Unit filename="include/Presentacion.h" />
+		<Unit filename="Alumnos/Alumnos.cpp" />
+		<Unit filename="Alumnos/Alumnos.h" />
+		<Unit filename="Alumnos/Datos_Alumno.h" />
+		<Unit filename="Alumnos/Entidad_Alumnos.h" />
+		<Unit filename="Alumnos/Negocio_Alumnos.h" />
+		<Unit filename="Alumnos/Presentacion_Alumno.h" />
+		<Unit filename="Capas/Datos.cpp" />
+		<Unit filename="Capas/Datos.h" />
+		<Unit filename="Capas/Entidad.cpp" />
+		<Unit filename="Capas/Entidad.h" />
+		<Unit filename="Capas/Negocio.cpp" />
+		<Unit filename="Capas/Negocio.h" />
+		<Unit filename="Capas/Presentacion.cpp" />
+		<Unit filename="Capas/Presentacion.h" />
+		<Unit filename="Materias/Materias.cpp" />
+		<Unit filename="Materias/Materias.h" />
+		<Unit filename="Materias_x_alumno/Materias_x_alumno.cpp" />
+		<Unit filename="Materias_x_alumno/Materias_x_alumno.h" />
+		<Unit filename="TP Integrador 2.pdf" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src/Alumno.cpp" />
-		<Unit filename="src/Datos.cpp" />
-		<Unit filename="src/Entidad.cpp" />
-		<Unit filename="src/Materia.cpp" />
-		<Unit filename="src/Materia_x_alumno.cpp" />
-		<Unit filename="src/Negocio.cpp" />
-		<Unit filename="src/Presentacion.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

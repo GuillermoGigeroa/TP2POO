@@ -1,2 +1,0 @@
-#include "Negocio.h"
-
