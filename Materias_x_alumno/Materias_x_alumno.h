@@ -1,9 +1,18 @@
 #ifndef MATERIA_X_ALUMNO_H
 #define MATERIA_X_ALUMNO_H
 
+#include "Materias_x_alumno_Presentacion.h"
+#include "Materias_x_alumno_Negocio.h"
+#include "Materias_x_alumno_Datos.h"
+#include "Materias_x_alumno_Entidad.h"
+
 #include <cstring>
 class Materia_x_alumno{
 private:
+    Materias_x_alumno_Presentacion p;
+    Materias_x_alumno_Negocio n;
+    Materias_x_alumno_Datos d;
+    Materias_x_alumno_Entidad e;
 	int id_materia;
 	int legajo;
 	bool eliminado;

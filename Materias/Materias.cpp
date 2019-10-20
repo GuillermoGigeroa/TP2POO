@@ -1,4 +1,4 @@
-#include "Materia.h"
+#include "Materias.h"
 #include <cstring>
 
 void Materia::setNombre(char *esteNombre){

@@ -1,10 +1,20 @@
 #ifndef ALUMNO_H
 #define ALUMNO_H
 
+#include "Alumnos_Presentacion.h"
+#include "Alumnos_Negocio.h"
+#include "Alumnos_Datos.h"
+#include "Alumnos_Entidad.h"
+
 #include <cstring>
 const char ALUMNOS[12] = "Alumnos.dat";
+
 class Alumno{
 private:
+    Alumnos_Presentacion p;
+    Alumnos_Negocio n;
+    Alumnos_Datos d;
+    Alumnos_Entidad e;
 	int legajo;
 	char nombre[50];
 	int dia_nac;

@@ -46,10 +46,14 @@
 		</Compiler>
 		<Unit filename="Alumnos/Alumnos.cpp" />
 		<Unit filename="Alumnos/Alumnos.h" />
-		<Unit filename="Alumnos/Datos_Alumno.h" />
-		<Unit filename="Alumnos/Entidad_Alumnos.h" />
-		<Unit filename="Alumnos/Negocio_Alumnos.h" />
-		<Unit filename="Alumnos/Presentacion_Alumno.h" />
+		<Unit filename="Alumnos/Alumnos_Datos.cpp" />
+		<Unit filename="Alumnos/Alumnos_Datos.h" />
+		<Unit filename="Alumnos/Alumnos_Entidad.cpp" />
+		<Unit filename="Alumnos/Alumnos_Entidad.h" />
+		<Unit filename="Alumnos/Alumnos_Negocio.cpp" />
+		<Unit filename="Alumnos/Alumnos_Negocio.h" />
+		<Unit filename="Alumnos/Alumnos_Presentacion.cpp" />
+		<Unit filename="Alumnos/Alumnos_Presentacion.h" />
 		<Unit filename="Capas/Datos.cpp" />
 		<Unit filename="Capas/Datos.h" />
 		<Unit filename="Capas/Entidad.cpp" />
@@ -60,8 +64,24 @@
 		<Unit filename="Capas/Presentacion.h" />
 		<Unit filename="Materias/Materias.cpp" />
 		<Unit filename="Materias/Materias.h" />
+		<Unit filename="Materias/Materias_Datos.cpp" />
+		<Unit filename="Materias/Materias_Datos.h" />
+		<Unit filename="Materias/Materias_Entidad.cpp" />
+		<Unit filename="Materias/Materias_Entidad.h" />
+		<Unit filename="Materias/Materias_Negocio.cpp" />
+		<Unit filename="Materias/Materias_Negocio.h" />
+		<Unit filename="Materias/Materias_Presentacion.cpp" />
+		<Unit filename="Materias/Materias_Presentacion.h" />
 		<Unit filename="Materias_x_alumno/Materias_x_alumno.cpp" />
 		<Unit filename="Materias_x_alumno/Materias_x_alumno.h" />
+		<Unit filename="Materias_x_alumno/Materias_x_alumno_Datos.cpp" />
+		<Unit filename="Materias_x_alumno/Materias_x_alumno_Datos.h" />
+		<Unit filename="Materias_x_alumno/Materias_x_alumno_Entidad.cpp" />
+		<Unit filename="Materias_x_alumno/Materias_x_alumno_Entidad.h" />
+		<Unit filename="Materias_x_alumno/Materias_x_alumno_Negocio.cpp" />
+		<Unit filename="Materias_x_alumno/Materias_x_alumno_Negocio.h" />
+		<Unit filename="Materias_x_alumno/Materias_x_alumno_Presentacion.cpp" />
+		<Unit filename="Materias_x_alumno/Materias_x_alumno_Presentacion.h" />
 		<Unit filename="TP Integrador 2.pdf" />
 		<Unit filename="main.cpp" />
 		<Extensions>

@@ -1,4 +1,4 @@
-#include "Alumno.h"
+#include "Alumnos.h"
 #include <cstring>
 
 void Alumno::setNombre(char *nombre){

@@ -1,9 +1,18 @@
 #ifndef MATERIA_H
 #define MATERIA_H
 
+#include "Materias_Presentacion.h"
+#include "Materias_Negocio.h"
+#include "Materias_Datos.h"
+#include "Materias_Entidad.h"
+
 #include <cstring>
 class Materia{
 private:
+    Materias_Presentacion p;
+    Materias_Negocio n;
+    Materias_Datos d;
+    Materias_Entidad e;
 	int id_materia;
 	char nombre[50];
 	char profesor[50];

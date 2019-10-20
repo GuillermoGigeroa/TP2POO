@@ -1,4 +1,4 @@
-#include "../include/Materia_x_alumno.h"
+#include "Materias_x_alumno.h"
 
 void Materia_x_alumno::altaMXA(){
 
