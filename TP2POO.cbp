@@ -19,6 +19,7 @@
 					<Add directory="Materias" />
 					<Add directory="Materias_x_alumno" />
 					<Add directory="Capas" />
+					<Add directory="clsMateria" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -34,6 +35,7 @@
 					<Add directory="Materias" />
 					<Add directory="Materias_x_alumno" />
 					<Add directory="Capas" />
+					<Add directory="clsMateria" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -45,6 +47,10 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="TP Integrador 2.pdf" />
+		<Unit filename="clsMateria/clsMateriaDAO.cpp" />
+		<Unit filename="clsMateria/clsMateriaDAO.h" />
+		<Unit filename="clsMateria/clsMateriaDTO.cpp" />
+		<Unit filename="clsMateria/clsMateriaDTO.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
