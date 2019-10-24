@@ -1,5 +1,6 @@
 *.exe
 *.depend
 *.layout
+*.save-failed
 bin/
 obj/
