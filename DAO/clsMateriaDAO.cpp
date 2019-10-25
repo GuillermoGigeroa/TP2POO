@@ -5,8 +5,10 @@ bool clsMateriaDAO::Insertar(clsMateriaDTO dto)
 {
     FILE *archivo;
     archivo = fopen(ARCHIVO_MATERIAS,"ab");
-    if(archivo == NULL)return false;
+    if(archivo == NULL)
+        return false;
     fwrite(&dto,sizeof(clsMateriaDTO),1,archivo);
+    fclose(archivo);
     return true;
 }
 
@@ -16,7 +18,8 @@ bool clsMateriaDAO::Eliminar(int ID)
     int pos = 0;
     clsMateriaDTO dto;
     archivo = fopen(ARCHIVO_MATERIAS,"rb+");
-    if(archivo == NULL)return false;
+    if(archivo == NULL)
+        return false;
     while(fread(&dto,sizeof(clsMateriaDTO),1,archivo))
     {
         if(dto.GetID()==ID && !dto.GetEliminado())
@@ -39,7 +42,8 @@ bool clsMateriaDAO::Modificar(clsMateriaDTO dto)
     int pos = 0;
     clsMateriaDTO dto_archivo;
     archivo = fopen(ARCHIVO_MATERIAS,"rb+");
-    if(archivo == NULL)return false;
+    if(archivo == NULL)
+        return false;
     while(fread(&dto_archivo,sizeof(clsMateriaDTO),1,archivo))
     {
         if(dto_archivo.GetID()==dto.GetID() && !dto.GetEliminado())
@@ -61,7 +65,8 @@ bool clsMateriaDAO::Listar(clsMateriaDTO *dto)
     int pos = 0;
     clsMateriaDTO dto_archivo;
     archivo = fopen(ARCHIVO_MATERIAS,"rb");
-    if(archivo == NULL)return false;
+    if(archivo == NULL)
+        return false;
     while(fread(&dto_archivo,sizeof(clsMateriaDTO),1,archivo))
     {
         if(!dto_archivo.GetEliminado())
@@ -70,15 +75,21 @@ bool clsMateriaDAO::Listar(clsMateriaDTO *dto)
         }
     }
     fclose(archivo);
+    return true;
 }
 
 int clsMateriaDAO::Count()
 {
     FILE *archivo;
     int cantidad = 0;
+    clsMateriaDTO dto;
     archivo = fopen(ARCHIVO_MATERIAS,"rb");
-    if(archivo == NULL)return -1;
-
-    //Cuenta la cantidad de registros sin eliminar.
-    return 0;
+    if(archivo == NULL)
+        return -1;
+    while(fread(&dto,sizeof(clsMateriaDTO),1,archivo))
+    {
+        cantidad++;
+    }
+    fclose(archivo);
+    return cantidad;
 }
