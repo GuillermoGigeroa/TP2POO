@@ -3,7 +3,6 @@
 #include "../DTO/clsMateriaDTO.h"
 
 const char ARCHIVO_MATERIAS[] = "Archivo_Materias.dat";
-
 class clsMateriaDAO
 {
     public:
