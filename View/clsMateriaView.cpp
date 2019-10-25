@@ -2,7 +2,7 @@
 
 void clsMateriaView::Menu()
 {
-        char op;
+    char op;
     bool salir = false;
     while(!salir)
     {
@@ -42,17 +42,21 @@ void clsMateriaView::Insertar()
     system("cls");
     char nombre[50];
     char profesor[50];
+    clsMateriaDTO dto;
+    clsMateriaDAO dao;
     cout<<"-----NUEVA MATERIA-----"<<endl;
     cout<<"Ingrese el nombre de la materia: ";
     cin.getline(nombre,50);
     cout<<"Ingrese el nombre del profesor: ";
     cin.getline(profesor,50);
+    dto.SetNombre(nombre);
+    dto.SetProfesor(profesor);
+    dao.Insertar(dto);
 }
 
 void clsMateriaView::Listar()
 {
     system("cls");
     cout<<"-----LISTADO DE MATERIAS-----"<<endl;
-
 }
 

@@ -9,7 +9,7 @@ class clsMateriaBL
         void Insertar(clsMateriaDTO);
         void Eliminar(int);
         void Modificar(clsMateriaDTO);
-        void Listar(clsMateriaDTO *);
+        void Listar(clsMateriaDTO*);
         int Count();
 };
 

@@ -1,31 +1,32 @@
 #include "clsMateriaBL.h"
+#include <cstdlib>
 
-void clsMateriaBL::Insertar(clsMateriaDTO materia)
+void clsMateriaBL::Insertar(clsMateriaDTO dto)
 {
     clsMateriaDAO dao;
     int id = dao.Count()+1;
-    materia.SetID(id);
-    dao.Insertar(materia);
-    //Inserta la materia en el archivo.
+    dto.SetID(id);
+    dto.SetEliminado(false);
+    dao.Insertar(dto);
 }
 void clsMateriaBL::Eliminar(int ID)
 {
     clsMateriaDAO dao;
     dao.Eliminar(ID);
-    //Elimina la materia del archivo de manera lógica.
 }
-void clsMateriaBL::Modificar(clsMateriaDTO materia)
+void clsMateriaBL::Modificar(clsMateriaDTO dto)
 {
     clsMateriaDAO dao;
-    dao.Modificar(materia);
-    //Igual que eliminar, pero pisa el registro completo con otro registro.
+    dao.Modificar(dto);
 }
-void clsMateriaBL::Listar(clsMateriaDTO *listaDeMaterias)
+void clsMateriaBL::Listar(clsMateriaDTO *listaDto)
 {
-    //Expulsa a una dirección de memoria para generar un vector.
+    clsMateriaDAO dao;
+    listaDto = (clsMateriaDTO*)malloc(sizeof(clsMateriaDTO)*dao.Count());
+    dao.Listar(listaDto);
 }
 int clsMateriaBL::Count()
 {
-    //Cuenta la cantidad de registros sin eliminar.
-    return 0;
+    clsMateriaDAO dao;
+    return dao.Count();
 }
