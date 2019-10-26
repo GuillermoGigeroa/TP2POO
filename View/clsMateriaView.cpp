@@ -10,6 +10,7 @@ void clsMateriaView::Menu()
         cout<<" _____________________________________________ "<<endl;
         cout<<"|                                             |"<<endl;
         cout<<"|     N - Nueva materia                       |"<<endl;
+        cout<<"|     L - Listar materias                     |"<<endl;
         cout<<"|     S - Salir                               |"<<endl;
         cout<<"|_____________________________________________|"<<endl;
         cout<<"Ingrese una opcion:";
@@ -21,6 +22,11 @@ void clsMateriaView::Menu()
         case 'N':
             {
                 Insertar();
+            }break;
+        case 'l':
+        case 'L':
+            {
+                Listar();
             }break;
         case 's':
         case 'S':
@@ -54,9 +60,31 @@ void clsMateriaView::Insertar()
     dao.Insertar(dto);
 }
 
+void clsMateriaView::Mostrar(clsMateriaDTO dto)
+{
+    char nombre[50];
+    dto.GetNombre(nombre);
+    char profesor[50];
+    dto.GetProfesor(profesor);
+    cout<<" ________________________________________________ "<<endl<<endl;
+    cout<<"      ID: "<<dto.GetID()<<endl;
+    cout<<"  Nombre: "<<nombre<<endl;
+    cout<<"Profesor: "<<profesor<<endl;
+}
+
 void clsMateriaView::Listar()
 {
     system("cls");
     cout<<"-----LISTADO DE MATERIAS-----"<<endl;
+    clsMateriaDTO *dto;
+    clsMateriaBL bl;
+    bl.Listar(dto);
+    for(int x=0;x < bl.Count(); ++x)
+    {
+        if(!dto[x].GetEliminado())
+        {
+            Mostrar(dto[x]);
+        }
+    }
 }
 

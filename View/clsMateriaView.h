@@ -14,6 +14,7 @@ class clsMateriaView
         void Menu();
         void Insertar();
         void Listar();
+        void Mostrar(clsMateriaDTO);
 };
 
 #endif // CLSMATERIAVIEW_H
