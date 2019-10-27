@@ -1,9 +1,7 @@
-#ifndef EXTRA_H
-#define EXTRA_H
+#include "Extra.h"
 #include <cstdlib>
+
 void Extra::limpiarConsola()
 {
 	system("cls || clear");
 }
-
-#endif

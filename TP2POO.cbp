@@ -56,6 +56,8 @@
 		<Unit filename="DAO/clsMateriaDAO.h" />
 		<Unit filename="DTO/clsMateriaDTO.cpp" />
 		<Unit filename="DTO/clsMateriaDTO.h" />
+		<Unit filename="EXTRA/Extra.cpp" />
+		<Unit filename="EXTRA/Extra.h" />
 		<Unit filename="TP Integrador 2.pdf" />
 		<Unit filename="View/clsMainView.cpp" />
 		<Unit filename="View/clsMainView.h" />

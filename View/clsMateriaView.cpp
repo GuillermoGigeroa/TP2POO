@@ -1,12 +1,14 @@
 #include "clsMateriaView.h"
+#include "../EXTRA/Extra.h"
 
 void clsMateriaView::Menu()
 {
+    Extra ext;
     char op;
     bool salir = false;
     while(!salir)
     {
-        system("cls");
+        ext.limpiarConsola();
         cout<<" _____________________________________________ "<<endl;
         cout<<"|                                             |"<<endl;
         cout<<"|     N - Nueva materia                       |"<<endl;
@@ -45,7 +47,8 @@ void clsMateriaView::Menu()
 
 void clsMateriaView::Insertar()
 {
-    system("cls");
+    Extra ext;
+    ext.limpiarConsola();
     char nombre[50];
     char profesor[50];
     clsMateriaDTO dto;
@@ -74,7 +77,8 @@ void clsMateriaView::Mostrar(clsMateriaDTO dto)
 
 void clsMateriaView::Listar()
 {
-    system("cls");
+    Extra ext;
+    ext.limpiarConsola();
     cout<<"-----LISTADO DE MATERIAS-----"<<endl;
     clsMateriaDTO *dto;
     clsMateriaBL bl;
