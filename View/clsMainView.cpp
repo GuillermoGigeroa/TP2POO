@@ -1,12 +1,14 @@
 #include "clsMainView.h"
+#include "../Extra.h"
 
 void clsMainView::Menu()
 {
+	Extra ext;
     char op;
     bool salir = false;
     while(!salir)
     {
-        system("cls");
+        ext.limpiarConsola();
         cout<<" _____________________________________________ "<<endl;
         cout<<"|                                             |"<<endl;
         cout<<"|     M - Materias                            |"<<endl;
