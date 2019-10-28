@@ -19,11 +19,17 @@ void clsMateriaBL::Modificar(clsMateriaDTO dto)
     clsMateriaDAO dao;
     dao.Modificar(dto);
 }
-void clsMateriaBL::Listar(clsMateriaDTO *listaDto)
+void clsMateriaBL::Listar(clsMateriaDTO *dto)
 {
     clsMateriaDAO dao;
+    clsMateriaDTO *listaDto;
     listaDto = (clsMateriaDTO*)malloc(sizeof(clsMateriaDTO)*dao.Count());
     dao.Listar(listaDto);
+    for(int x = 0; x < Count(); ++x)
+    {
+        dto[x].Copy(listaDto[x]);
+    }
+    free(listaDto);
 }
 int clsMateriaBL::Count()
 {

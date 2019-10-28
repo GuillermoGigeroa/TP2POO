@@ -17,6 +17,8 @@ bool clsMateriaDAO::Eliminar(int ID)
     FILE *archivo;
     int pos = 0;
     clsMateriaDTO dto;
+    archivo = fopen(ARCHIVO_MATERIAS,"ab");
+    fclose(archivo);
     archivo = fopen(ARCHIVO_MATERIAS,"rb+");
     if(archivo == NULL)
         return false;
@@ -41,6 +43,8 @@ bool clsMateriaDAO::Modificar(clsMateriaDTO dto)
     FILE *archivo;
     int pos = 0;
     clsMateriaDTO dto_archivo;
+    archivo = fopen(ARCHIVO_MATERIAS,"ab");
+    fclose(archivo);
     archivo = fopen(ARCHIVO_MATERIAS,"rb+");
     if(archivo == NULL)
         return false;
@@ -64,6 +68,8 @@ bool clsMateriaDAO::Listar(clsMateriaDTO *dto)
     FILE *archivo;
     int pos = 0;
     clsMateriaDTO dto_archivo;
+    archivo = fopen(ARCHIVO_MATERIAS,"ab");
+    fclose(archivo);
     archivo = fopen(ARCHIVO_MATERIAS,"rb");
     if(archivo == NULL)
         return false;
@@ -83,9 +89,11 @@ int clsMateriaDAO::Count()
     FILE *archivo;
     int cantidad = 0;
     clsMateriaDTO dto;
+    archivo = fopen(ARCHIVO_MATERIAS,"ab");
+    fclose(archivo);
     archivo = fopen(ARCHIVO_MATERIAS,"rb");
     if(archivo == NULL)
-        return -1;
+        return 0;
     while(fread(&dto,sizeof(clsMateriaDTO),1,archivo))
     {
         cantidad++;

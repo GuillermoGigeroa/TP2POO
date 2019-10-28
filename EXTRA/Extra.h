@@ -5,6 +5,7 @@ class Extra
 {
 	public:
         void limpiarConsola();
+        void pausa();
 };
 
 #endif

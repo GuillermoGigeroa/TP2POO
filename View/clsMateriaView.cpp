@@ -5,8 +5,7 @@ void clsMateriaView::Menu()
 {
     Extra ext;
     char op;
-    bool salir = false;
-    while(!salir)
+    while(true)
     {
         ext.limpiarConsola();
         cout<<" _____________________________________________ "<<endl;
@@ -33,13 +32,12 @@ void clsMateriaView::Menu()
         case 's':
         case 'S':
             {
-                salir = true;
+                return;
             }break;
         default:
             {
                 cout<<"Opcion incorrecta..."<<endl;
-                cin.get();
-                cin.ignore();
+                ext.pausa();
             }break;
         }
     }
@@ -52,7 +50,7 @@ void clsMateriaView::Insertar()
     char nombre[50];
     char profesor[50];
     clsMateriaDTO dto;
-    clsMateriaDAO dao;
+    clsMateriaBL bl;
     cout<<"-----NUEVA MATERIA-----"<<endl;
     cout<<"Ingrese el nombre de la materia: ";
     cin.getline(nombre,50);
@@ -60,7 +58,8 @@ void clsMateriaView::Insertar()
     cin.getline(profesor,50);
     dto.SetNombre(nombre);
     dto.SetProfesor(profesor);
-    dao.Insertar(dto);
+    bl.Insertar(dto);
+    ext.pausa();
 }
 
 void clsMateriaView::Mostrar(clsMateriaDTO dto)
@@ -90,5 +89,6 @@ void clsMateriaView::Listar()
             Mostrar(dto[x]);
         }
     }
+    ext.pausa();
 }
 
