@@ -5,7 +5,8 @@ void clsMateriaView::Menu()
 {
     Extra ext;
     char op;
-    while(true)
+    bool continuar = true;
+    while(continuar)
     {
         ext.limpiarConsola();
         cout<<" _____________________________________________ "<<endl;
@@ -32,7 +33,7 @@ void clsMateriaView::Menu()
         case 's':
         case 'S':
             {
-                return;
+                continuar = false;
             }break;
         default:
             {
@@ -76,11 +77,12 @@ void clsMateriaView::Mostrar(clsMateriaDTO dto)
 
 void clsMateriaView::Listar()
 {
+    clsMateriaDTO *dto;
+    clsMateriaBL bl;
     Extra ext;
     ext.limpiarConsola();
     cout<<"-----LISTADO DE MATERIAS-----"<<endl;
-    clsMateriaDTO *dto;
-    clsMateriaBL bl;
+    dto = (clsMateriaDTO*)malloc(sizeof(clsMateriaDTO)*bl.Count());
     bl.Listar(dto);
     for(int x=0;x < bl.Count(); ++x)
     {
@@ -89,6 +91,7 @@ void clsMateriaView::Listar()
             Mostrar(dto[x]);
         }
     }
+
     ext.pausa();
 }
 

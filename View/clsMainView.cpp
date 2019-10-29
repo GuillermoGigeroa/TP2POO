@@ -5,7 +5,8 @@ void clsMainView::Menu()
 {
 	Extra ext;
     char op;
-    while(true)
+    bool continuar = true;
+    while(continuar)
     {
         ext.limpiarConsola();
         cout<<" _____________________________________________ "<<endl;
@@ -27,7 +28,7 @@ void clsMainView::Menu()
         case 's':
         case 'S':
             {
-                return;
+                continuar = false;
             }break;
         default:
             {
