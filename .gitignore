@@ -1,6 +1,7 @@
 *.exe
 *.depend
 *.layout
+*.dat
 *.save-failed
 bin/
 obj/
