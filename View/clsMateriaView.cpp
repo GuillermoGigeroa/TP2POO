@@ -12,7 +12,9 @@ void clsMateriaView::Menu()
         cout<<" _____________________________________________ "<<endl;
         cout<<"|                                             |"<<endl;
         cout<<"|     N - Nueva materia                       |"<<endl;
+        cout<<"|     E - Eliminar materia                    |"<<endl;
         cout<<"|     L - Listar materias                     |"<<endl;
+        cout<<"|                                             |"<<endl;
         cout<<"|     S - Salir                               |"<<endl;
         cout<<"|_____________________________________________|"<<endl;
         cout<<"Ingrese una opcion:";
@@ -24,6 +26,11 @@ void clsMateriaView::Menu()
         case 'N':
             {
                 Insertar();
+            }break;
+        case 'e':
+        case 'E':
+            {
+                Eliminar();
             }break;
         case 'l':
         case 'L':
@@ -52,7 +59,7 @@ void clsMateriaView::Insertar()
     char profesor[50];
     clsMateriaDTO dto;
     clsMateriaBL bl;
-    cout<<"-----NUEVA MATERIA-----"<<endl;
+    cout<<"     *****     NUEVA MATERIA     *****"<<endl;
     cout<<"Ingrese el nombre de la materia: ";
     cin.getline(nombre,50);
     cout<<"Ingrese el nombre del profesor: ";
@@ -60,6 +67,20 @@ void clsMateriaView::Insertar()
     dto.SetNombre(nombre);
     dto.SetProfesor(profesor);
     bl.Insertar(dto);
+}
+
+void clsMateriaView::Eliminar()
+{
+    Extra ext;
+    ext.limpiarConsola();
+    clsMateriaBL bl;
+    int ID;
+    cout<<"     *****     ELIMINAR MATERIA     *****"<<endl;
+    cout<<"Ingrese el ID de la materia a eliminar: ";
+    cin>>ID;
+    cin.ignore();
+    bl.Eliminar(ID);
+    cout<<"Eliminado correctamente"<<endl;
     ext.pausa();
 }
 
@@ -69,10 +90,10 @@ void clsMateriaView::Mostrar(clsMateriaDTO dto)
     dto.GetNombre(nombre);
     char profesor[50];
     dto.GetProfesor(profesor);
-    cout<<" ________________________________________________ "<<endl<<endl;
     cout<<"      ID: "<<dto.GetID()<<endl;
     cout<<"  Nombre: "<<nombre<<endl;
     cout<<"Profesor: "<<profesor<<endl;
+    cout<<"__________________________________________________"<<endl<<endl;
 }
 
 void clsMateriaView::Listar()
@@ -81,9 +102,10 @@ void clsMateriaView::Listar()
     clsMateriaBL bl;
     Extra ext;
     ext.limpiarConsola();
-    cout<<"-----LISTADO DE MATERIAS-----"<<endl;
+    cout<<"     *****     LISTADO DE MATERIAS     *****"<<endl;
     dto = (clsMateriaDTO*)malloc(sizeof(clsMateriaDTO)*bl.Count());
     bl.Listar(dto);
+    cout<<"__________________________________________________"<<endl<<endl;
     for(int x=0;x < bl.Count(); ++x)
     {
         if(!dto[x].GetEliminado())
@@ -91,7 +113,7 @@ void clsMateriaView::Listar()
             Mostrar(dto[x]);
         }
     }
-
+    free(dto);
     ext.pausa();
 }
 

@@ -12,6 +12,7 @@ void clsMainView::Menu()
         cout<<" _____________________________________________ "<<endl;
         cout<<"|                                             |"<<endl;
         cout<<"|     M - Materias                            |"<<endl;
+        cout<<"|                                             |"<<endl;
         cout<<"|     S - Salir                               |"<<endl;
         cout<<"|_____________________________________________|"<<endl;
         cout<<"Ingrese una opcion:";

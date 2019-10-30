@@ -13,6 +13,7 @@ class clsMateriaView
     public:
         void Menu();
         void Insertar();
+        void Eliminar();
         void Listar();
         void Mostrar(clsMateriaDTO);
 };

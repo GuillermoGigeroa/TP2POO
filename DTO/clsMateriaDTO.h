@@ -7,7 +7,7 @@ class clsMateriaDTO
     public:
         int  GetID() { return id_materia; }
         void GetNombre(char *val) { strcpy(val,nombre); }
-        void GetProfesor(char *val) { strcpy(nombre,val); }
+        void GetProfesor(char *val) { strcpy(val,profesor); }
         bool GetEliminado() { return eliminado; }
 
         void SetID(int val) { id_materia = val; }
