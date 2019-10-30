@@ -11,6 +11,9 @@ class clsMateriaDAO
         bool Modificar(clsMateriaDTO);
         bool Listar(clsMateriaDTO *);
         int Count();
+        int GeneradorDeID();
+    private:
+        void CrearArchivoMateriaSiNoExiste();
 };
 
 #endif // CLSMATERIADAO_H

@@ -1,28 +1,28 @@
 #include "clsMateriaBL.h"
 #include <cstdlib>
 
-void clsMateriaBL::Insertar(clsMateriaDTO dto)
+bool clsMateriaBL::Insertar(clsMateriaDTO dto)
 {
     clsMateriaDAO dao;
-    int id = dao.Count()+1;
+    int id = dao.GeneradorDeID();
     dto.SetID(id);
     dto.SetEliminado(false);
-    dao.Insertar(dto);
+    return dao.Insertar(dto);
 }
-void clsMateriaBL::Eliminar(int ID)
+bool clsMateriaBL::Eliminar(int ID)
 {
     clsMateriaDAO dao;
-    dao.Eliminar(ID);
+    return dao.Eliminar(ID);
 }
-void clsMateriaBL::Modificar(clsMateriaDTO dto)
+bool clsMateriaBL::Modificar(clsMateriaDTO dto)
 {
     clsMateriaDAO dao;
-    dao.Modificar(dto);
+    return dao.Modificar(dto);
 }
-void clsMateriaBL::Listar(clsMateriaDTO *dto)
+bool clsMateriaBL::Listar(clsMateriaDTO *dto)
 {
     clsMateriaDAO dao;
-    dao.Listar(dto);
+    return dao.Listar(dto);
 }
 int clsMateriaBL::Count()
 {

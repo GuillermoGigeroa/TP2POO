@@ -6,10 +6,10 @@
 class clsMateriaBL
 {
     public:
-        void Insertar(clsMateriaDTO);
-        void Eliminar(int);
-        void Modificar(clsMateriaDTO);
-        void Listar(clsMateriaDTO*);
+        bool Insertar(clsMateriaDTO);
+        bool Eliminar(int);
+        bool Modificar(clsMateriaDTO);
+        bool Listar(clsMateriaDTO*);
         int Count();
 };
 

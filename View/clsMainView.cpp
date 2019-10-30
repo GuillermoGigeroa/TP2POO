@@ -4,7 +4,7 @@
 void clsMainView::Menu()
 {
 	Extra ext;
-    char op;
+    char op;//TODO Faltan validaciones
     bool continuar = true;
     while(continuar)
     {
