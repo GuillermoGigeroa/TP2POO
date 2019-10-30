@@ -100,18 +100,15 @@ void clsMateriaView::Listar()
 {
     clsMateriaDTO *dto;
     clsMateriaBL bl;
+    dto = (clsMateriaDTO*)malloc(sizeof(clsMateriaDTO)*bl.Count());
     Extra ext;
     ext.limpiarConsola();
-    cout<<"     *****     LISTADO DE MATERIAS     *****"<<endl;
-    dto = (clsMateriaDTO*)malloc(sizeof(clsMateriaDTO)*bl.Count());
     bl.Listar(dto);
+    cout<<"     *****     LISTADO DE MATERIAS     *****"<<endl;
     cout<<"__________________________________________________"<<endl<<endl;
     for(int x=0;x < bl.Count(); ++x)
     {
-        if(!dto[x].GetEliminado())
-        {
             Mostrar(dto[x]);
-        }
     }
     free(dto);
     ext.pausa();

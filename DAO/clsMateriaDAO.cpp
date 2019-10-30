@@ -27,7 +27,7 @@ bool clsMateriaDAO::Eliminar(int ID)
         if(dto.GetID()==ID && !dto.GetEliminado())
         {
             dto.SetEliminado(true);
-            fseek(archivo,sizeof(clsMateriaDTO)*pos,SEEK_CUR);
+            fseek(archivo,sizeof(clsMateriaDTO)*pos,SEEK_SET);
             fwrite(&dto,sizeof(clsMateriaDTO),1,archivo);
             fclose(archivo);
             return true;
@@ -75,7 +75,7 @@ bool clsMateriaDAO::Listar(clsMateriaDTO *dto)
         return false;
     while(fread(&dto_archivo,sizeof(clsMateriaDTO),1,archivo))
     {
-        if(!dto_archivo.GetEliminado())
+        if (!dto_archivo.GetEliminado())
         {
             dto[pos++].Copy(dto_archivo);
         }
