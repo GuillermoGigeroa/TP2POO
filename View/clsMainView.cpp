@@ -4,11 +4,11 @@
 void clsMainView::Menu()
 {
 	Extra ext;
-    char op;//TODO Faltan validaciones
+    char opc[50];
     bool continuar = true;
     while(continuar)
     {
-        ext.limpiarConsola();
+        ext.LimpiarConsola();
         cout<<" _____________________________________________ "<<endl;
         cout<<"|                                             |"<<endl;
         cout<<"|     M - Materias                            |"<<endl;
@@ -16,27 +16,29 @@ void clsMainView::Menu()
         cout<<"|     S - Salir                               |"<<endl;
         cout<<"|_____________________________________________|"<<endl;
         cout<<"Ingrese una opcion:";
-        cin>>op;
-        cin.ignore();
-        switch(op)
+        cin.getline(opc,50);
+        if(opc[0] != '\0' && opc[1] == '\0')
         {
-        case 'm':
-        case 'M':
+            switch(opc[0])
             {
-                clsMateriaView matView;
-                matView.Menu();
-            }break;
-        case 's':
-        case 'S':
-            {
-                continuar = false;
-            }break;
-        default:
-            {
-                cout<<"Opcion incorrecta..."<<endl;
-                cin.get();
-                cin.ignore();
-            }break;
+            case 'm':
+            case 'M':
+                {
+                    clsMateriaView matView;
+                    matView.Menu();
+                }break;
+            case 's':
+            case 'S':
+                {
+                    continuar = false;
+                }break;
+            default:
+                {
+                    cout<<"Opcion incorrecta..."<<endl;
+                    cin.get();
+                    cin.ignore();
+                }break;
+            }
         }
     }
 }

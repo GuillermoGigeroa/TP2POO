@@ -4,8 +4,9 @@
 class Extra
 {
 	public:
-        void limpiarConsola();
-        void pausa();
+        void LimpiarConsola();
+        void Pausa();
+        bool VerificarSiEsNumero();
 };
 
 #endif

@@ -4,11 +4,11 @@
 void clsMateriaView::Menu()
 {
     Extra ext;
-    char op;//TODO Faltan validaciones
+    char opc[50];
     bool continuar = true;
     while(continuar)
     {
-        ext.limpiarConsola();
+        ext.LimpiarConsola();
         cout<<" _____________________________________________ "<<endl;
         cout<<"|                                             |"<<endl;
         cout<<"|     N - Nueva materia                       |"<<endl;
@@ -19,40 +19,46 @@ void clsMateriaView::Menu()
         cout<<"|     S - Salir                               |"<<endl;
         cout<<"|_____________________________________________|"<<endl;
         cout<<"Ingrese una opcion:";
-        cin>>op;
-        cin.ignore();
-        switch(op)
+        cin.getline(opc,50);
+        if(opc[0] != '\0' && opc[1] == '\0')
         {
-        case 'n':
-        case 'N':
+            switch(opc[0])
             {
-                Insertar();
-            }break;
-        case 'e':
-        case 'E':
-            {
-                Eliminar();
-            }break;
-        case 'm':
-        case 'M':
-            {
-                Modificar();
-            }break;
-        case 'l':
-        case 'L':
-            {
-                Listar();
-            }break;
-        case 's':
-        case 'S':
-            {
-                continuar = false;
-            }break;
-        default:
-            {
-                cout<<"Opcion incorrecta."<<endl;
-                ext.pausa();
-            }break;
+            case 'n':
+            case 'N':
+                {
+                    Insertar();
+                    ext.Pausa();
+                }break;
+            case 'e':
+            case 'E':
+                {
+                    Eliminar();
+                    ext.Pausa();
+                }break;
+            case 'm':
+            case 'M':
+                {
+                    Modificar();
+                    ext.Pausa();
+                }break;
+            case 'l':
+            case 'L':
+                {
+                    Listar();
+                    ext.Pausa();
+                }break;
+            case 's':
+            case 'S':
+                {
+                    continuar = false;
+                }break;
+            default:
+                {
+                    cout<<"Opcion incorrecta."<<endl;
+                    ext.Pausa();
+                }break;
+            }
         }
     }
 }
@@ -60,16 +66,16 @@ void clsMateriaView::Menu()
 void clsMateriaView::Insertar()
 {
     Extra ext;
-    ext.limpiarConsola();
+    ext.LimpiarConsola();
     char nombre[50];
     char profesor[50];
     clsMateriaDTO dto;
     clsMateriaBL bl;
     cout<<"     *****     NUEVA MATERIA     *****"<<endl;
     cout<<"Ingrese el nombre de la materia: ";
-    cin.getline(nombre,50);//TODO Faltan validaciones
+    cin.getline(nombre,50);
     cout<<"Ingrese el nombre del profesor: ";
-    cin.getline(profesor,50);//TODO Faltan validaciones
+    cin.getline(profesor,50);
     dto.SetNombre(nombre);
     dto.SetProfesor(profesor);
     if(bl.Insertar(dto))
@@ -80,18 +86,18 @@ void clsMateriaView::Insertar()
     {
         cout<<"Error: No se ha creado la nueva materia correctamente."<<endl;
     }
-    ext.pausa();
 }
 
 void clsMateriaView::Eliminar()
 {
     Extra ext;
-    ext.limpiarConsola();
-    int ID;
+    ext.LimpiarConsola();
+    char ID_char[50];
+    Listar();
     cout<<"     *****     ELIMINAR MATERIA     *****"<<endl;
     cout<<"Ingrese el ID de la materia a eliminar: ";
-    cin>>ID;//TODO Faltan validaciones
-    cin.ignore();
+    cin.getline(ID,50);
+    if //todo continuar
     clsMateriaBL bl;
     if(bl.Eliminar(ID))
     {
@@ -101,7 +107,6 @@ void clsMateriaView::Eliminar()
     {
         cout<<"Error: No se ha eliminado la materia correctamente."<<endl;
     }
-    ext.pausa();
 }
 
 void clsMateriaView::Modificar()
@@ -111,7 +116,8 @@ void clsMateriaView::Modificar()
     clsMateriaDTO dto;
     clsMateriaDTO *listaDto;
 
-    ext.limpiarConsola();
+    ext.LimpiarConsola();
+    Listar();
     cout<<"     *****     MODIFICAR MATERIA     *****"<<endl;
     cout<<"Ingrese el ID de la materia a modificar: ";
     int ID;
@@ -165,7 +171,6 @@ void clsMateriaView::Modificar()
     {
         cout<<"Error: Falla al leer listado de materias."<<endl;
     }
-    ext.pausa();
 }
 
 void clsMateriaView::Mostrar(clsMateriaDTO dto)
@@ -186,7 +191,7 @@ void clsMateriaView::Listar()
     clsMateriaDTO *dto;
     clsMateriaBL bl;
     dto = (clsMateriaDTO*)malloc(sizeof(clsMateriaDTO)*bl.Count());
-    ext.limpiarConsola();
+    ext.LimpiarConsola();
     if(bl.Listar(dto))
     {
         cout<<"     *****     LISTADO DE MATERIAS     *****"<<endl;
@@ -201,6 +206,5 @@ void clsMateriaView::Listar()
         cout<<"Error: No se ha podido listar las materias."<<endl;
     }
     free(dto);
-    ext.pausa();
 }
 
