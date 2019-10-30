@@ -6,7 +6,7 @@ class Extra
 	public:
         void LimpiarConsola();
         void Pausa();
-        bool VerificarSiEsNumero();
+        bool VerificarSiEsNumero(char *);
 };
 
 #endif

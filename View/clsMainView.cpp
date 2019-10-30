@@ -34,7 +34,7 @@ void clsMainView::Menu()
                 }break;
             default:
                 {
-                    cout<<"Opcion incorrecta..."<<endl;
+                    cout<<endl<<"Opcion incorrecta..."<<endl;
                     cin.get();
                     cin.ignore();
                 }break;

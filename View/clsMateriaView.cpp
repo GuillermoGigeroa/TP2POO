@@ -55,7 +55,7 @@ void clsMateriaView::Menu()
                 }break;
             default:
                 {
-                    cout<<"Opcion incorrecta."<<endl;
+                    cout<<endl<<"Opcion incorrecta."<<endl;
                     ext.Pausa();
                 }break;
             }
@@ -72,7 +72,7 @@ void clsMateriaView::Insertar()
     clsMateriaDTO dto;
     clsMateriaBL bl;
     cout<<"     *****     NUEVA MATERIA     *****"<<endl;
-    cout<<"Ingrese el nombre de la materia: ";
+    cout<<endl<<"Ingrese el nombre de la materia: ";
     cin.getline(nombre,50);
     cout<<"Ingrese el nombre del profesor: ";
     cin.getline(profesor,50);
@@ -80,33 +80,40 @@ void clsMateriaView::Insertar()
     dto.SetProfesor(profesor);
     if(bl.Insertar(dto))
     {
-        cout<<"Se ha creado la nueva materia correctamente."<<endl;
+        cout<<endl<<"Se ha creado la nueva materia correctamente."<<endl;
     }
     else
     {
-        cout<<"Error: No se ha creado la nueva materia correctamente."<<endl;
+        cout<<endl<<"Error: No se ha creado la nueva materia correctamente."<<endl;
     }
 }
 
 void clsMateriaView::Eliminar()
 {
     Extra ext;
-    ext.LimpiarConsola();
     char ID_char[50];
-    Listar();
-    cout<<"     *****     ELIMINAR MATERIA     *****"<<endl;
-    cout<<"Ingrese el ID de la materia a eliminar: ";
-    cin.getline(ID,50);
-    if //todo continuar
-    clsMateriaBL bl;
-    if(bl.Eliminar(ID))
+    ID_char[0] = 'a';
+    while(!ext.VerificarSiEsNumero(ID_char))
     {
-        cout<<"Se ha eliminado la materia correctamente."<<endl;
+        ext.LimpiarConsola();
+        Listar();
+        cout<<endl<<"     *****     ELIMINAR MATERIA     *****"<<endl;
+        cout<<endl<<"Ingrese el ID de la materia a eliminar: ";
+        cin.getline(ID_char,50);
+        if(ext.VerificarSiEsNumero(ID_char)){
+            int ID = atoi(ID_char);
+            clsMateriaBL bl;
+            if(bl.Eliminar(ID))
+            {
+                cout<<endl<<"Se ha eliminado la materia correctamente."<<endl;
+            }
+            else
+            {
+                cout<<endl<<"Error: No se ha eliminado la materia correctamente."<<endl;
+            }
+        }
     }
-    else
-    {
-        cout<<"Error: No se ha eliminado la materia correctamente."<<endl;
-    }
+
 }
 
 void clsMateriaView::Modificar()
@@ -119,7 +126,7 @@ void clsMateriaView::Modificar()
     ext.LimpiarConsola();
     Listar();
     cout<<"     *****     MODIFICAR MATERIA     *****"<<endl;
-    cout<<"Ingrese el ID de la materia a modificar: ";
+    cout<<endl<<"Ingrese el ID de la materia a modificar: ";
     int ID;
     cin>>ID;//TODO Faltan validaciones
     cin.ignore();
@@ -144,7 +151,7 @@ void clsMateriaView::Modificar()
             dto.GetNombre(nombre);
             char profesor[50];
             dto.GetProfesor(profesor);
-            cout<<"              ID: "<<dto.GetID()<<endl;
+            cout<<endl<<"              ID: "<<dto.GetID()<<endl;
             cout<<"  Nombre antiguo: "<<nombre<<endl;
             cout<<"    Nombre nuevo: ";
             cin.getline(nombre,50);
@@ -155,21 +162,21 @@ void clsMateriaView::Modificar()
             dto.SetProfesor(profesor);
             if(bl.Modificar(dto))
             {
-                cout<<"Se ha modificado la materia correctamente."<<endl;
+                cout<<endl<<"Se ha modificado la materia correctamente."<<endl;
             }
             else
             {
-                cout<<"Error: No se ha modificado la materia."<<endl;
+                cout<<endl<<"Error: No se ha modificado la materia."<<endl;
             }
         }
         else
         {
-            cout<<"Error: No se ha encontrado el ID ingresado."<<endl;
+            cout<<endl<<"Error: No se ha encontrado el ID ingresado."<<endl;
         }
     }
     else
     {
-        cout<<"Error: Falla al leer listado de materias."<<endl;
+        cout<<endl<<"Error: Falla al leer listado de materias."<<endl;
     }
 }
 
@@ -203,7 +210,7 @@ void clsMateriaView::Listar()
     }
     else
     {
-        cout<<"Error: No se ha podido listar las materias."<<endl;
+        cout<<endl<<"Error: No se ha podido listar las materias."<<endl;
     }
     free(dto);
 }
