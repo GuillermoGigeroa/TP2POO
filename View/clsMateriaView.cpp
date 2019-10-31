@@ -127,56 +127,64 @@ void clsMateriaView::Modificar()
     Listar();
     cout<<"     *****     MODIFICAR MATERIA     *****"<<endl;
     cout<<endl<<"Ingrese el ID de la materia a modificar: ";
-    int ID;
-    cin>>ID;//TODO Faltan validaciones
-    cin.ignore();
-
-    listaDto = (clsMateriaDTO*)malloc(sizeof(clsMateriaDTO)*bl.Count());
-    if(bl.Listar(listaDto))
+    char ID_char[50];
+    ID_char[0] = 'a';
+    while(!ext.VerificarSiEsNumero(ID_char))
     {
-        bool seEncontro = false;
-        for(int x = 0; x < bl.Count(); ++x)
+        cin.getline(ID_char,50);
+        if(ext.VerificarSiEsNumero(ID_char))
         {
-            if(listaDto[x].GetID() == ID && !listaDto[x].GetEliminado())
-            {
-                dto.Copy(listaDto[x]);
-                seEncontro = true;
-            }
-        }
-        free(listaDto);
+            int ID;
+            ID = atoi(ID_char);
 
-        if (seEncontro)
-        {
-            char nombre[50];
-            dto.GetNombre(nombre);
-            char profesor[50];
-            dto.GetProfesor(profesor);
-            cout<<endl<<"              ID: "<<dto.GetID()<<endl;
-            cout<<"  Nombre antiguo: "<<nombre<<endl;
-            cout<<"    Nombre nuevo: ";
-            cin.getline(nombre,50);
-            cout<<"Profesor antiguo: "<<profesor<<endl;
-            cout<<"  Profesor nuevo: ";
-            cin.getline(profesor,50);
-            dto.SetNombre(nombre);
-            dto.SetProfesor(profesor);
-            if(bl.Modificar(dto))
+            listaDto = (clsMateriaDTO*)malloc(sizeof(clsMateriaDTO)*bl.Count());
+            if(bl.Listar(listaDto))
             {
-                cout<<endl<<"Se ha modificado la materia correctamente."<<endl;
+                bool seEncontro = false;
+                for(int x = 0; x < bl.Count(); ++x)
+                {
+                    if(listaDto[x].GetID() == ID && !listaDto[x].GetEliminado())
+                    {
+                        dto.Copy(listaDto[x]);
+                        seEncontro = true;
+                    }
+                }
+                free(listaDto);
+
+                if (seEncontro)
+                {
+                    char nombre[50];
+                    dto.GetNombre(nombre);
+                    char profesor[50];
+                    dto.GetProfesor(profesor);
+                    cout<<endl<<"              ID: "<<dto.GetID()<<endl;
+                    cout<<"  Nombre antiguo: "<<nombre<<endl;
+                    cout<<"    Nombre nuevo: ";
+                    cin.getline(nombre,50);
+                    cout<<"Profesor antiguo: "<<profesor<<endl;
+                    cout<<"  Profesor nuevo: ";
+                    cin.getline(profesor,50);
+                    dto.SetNombre(nombre);
+                    dto.SetProfesor(profesor);
+                    if(bl.Modificar(dto))
+                    {
+                        cout<<endl<<"Se ha modificado la materia correctamente."<<endl;
+                    }
+                    else
+                    {
+                        cout<<endl<<"Error: No se ha modificado la materia."<<endl;
+                    }
+                }
+                else
+                {
+                    cout<<endl<<"Error: No se ha encontrado el ID ingresado."<<endl;
+                }
             }
             else
             {
-                cout<<endl<<"Error: No se ha modificado la materia."<<endl;
+                cout<<endl<<"Error: Falla al leer listado de materias."<<endl;
             }
         }
-        else
-        {
-            cout<<endl<<"Error: No se ha encontrado el ID ingresado."<<endl;
-        }
-    }
-    else
-    {
-        cout<<endl<<"Error: Falla al leer listado de materias."<<endl;
     }
 }
 
@@ -202,7 +210,10 @@ void clsMateriaView::Listar()
     if(bl.Listar(dto))
     {
         cout<<"     *****     LISTADO DE MATERIAS     *****"<<endl;
-        cout<<"__________________________________________________"<<endl<<endl;
+        cout<<" ____ ________________________________ __________ "<<endl<<endl;
+        cout<<"|    |                                |                                |"<<endl;
+        cout<<"| ID | NOMBRE DE MATERIA              | NOMBRE DE PROFESOR         |"<<endl;
+        cout<<"|____|________________________________|__________|"<<endl<<endl;
         for(int x=0;x < bl.Count(); ++x)
         {
             Mostrar(dto[x]);
