@@ -12,6 +12,8 @@ bool clsMateriaBL::Insertar(clsMateriaDTO dto)
 bool clsMateriaBL::Eliminar(int ID)
 {
     clsMateriaDAO dao;
+    if(ID < 0)
+        return false;
     return dao.Eliminar(ID);
 }
 bool clsMateriaBL::Modificar(clsMateriaDTO dto)

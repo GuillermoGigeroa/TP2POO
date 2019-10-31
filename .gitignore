@@ -3,5 +3,6 @@
 *.layout
 *.dat
 *.save-failed
+*.cscope_file_list
 bin/
 obj/

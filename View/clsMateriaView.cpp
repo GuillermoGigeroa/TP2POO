@@ -1,25 +1,29 @@
 #include "clsMateriaView.h"
 #include "../HELPER/clsHelp.h"
+#include <iomanip>
 
 void clsMateriaView::Menu()
 {
     clsHelp ext;
-    char opc[50];
+    char opc[500];
     bool continuar = true;
     while(continuar)
     {
         ext.LimpiarConsola();
-        cout<<" _____________________________________________ "<<endl;
-        cout<<"|                                             |"<<endl;
-        cout<<"|     N - Nueva materia                       |"<<endl;
-        cout<<"|     E - Eliminar materia                    |"<<endl;
-        cout<<"|     M - Modificar materia                   |"<<endl;
-        cout<<"|     L - Listar materias                     |"<<endl;
-        cout<<"|                                             |"<<endl;
-        cout<<"|     S - Salir                               |"<<endl;
-        cout<<"|_____________________________________________|"<<endl;
-        cout<<"Ingrese una opcion:";
-        cin.getline(opc,50);
+        ext._EscribirSlow(" ______________________________________________ ");
+        ext._EscribirSlow("|                                              |");
+        ext._EscribirSlow("|           G.I.G.E.R.O.A.B.L.A.C.K.           |");
+        ext._EscribirSlow("|______________________________________________|");
+        ext._EscribirSlow("|                                              |");
+        ext._EscribirSlow("|     N - Nueva materia                        |");
+        ext._EscribirSlow("|     E - Eliminar materia                     |");
+        ext._EscribirSlow("|     M - Modificar materia                    |");
+        ext._EscribirSlow("|     L - Listar materias                      |");
+        ext._EscribirSlow("|                                              |");
+        ext._EscribirSlow("|     S - Salir                                |");
+        ext._EscribirSlow("|______________________________________________|");
+        ext.EscribirSlowParaIngresos("Ingrese una opcion: ");
+        cin.getline(opc,500);
         if(opc[0] != '\0' && opc[1] == '\0')
         {
             switch(opc[0])
@@ -55,7 +59,8 @@ void clsMateriaView::Menu()
                 }break;
             default:
                 {
-                    cout<<endl<<"Opcion incorrecta."<<endl;
+                    cout<<endl;
+                    ext.EscribirSlow("Opcion incorrecta.");
                     ext.Pausa();
                 }break;
             }
@@ -71,20 +76,30 @@ void clsMateriaView::Insertar()
     char profesor[50];
     clsMateriaDTO dto;
     clsMateriaBL bl;
-    cout<<"     *****     NUEVA MATERIA     *****"<<endl;
-    cout<<endl<<"Ingrese el nombre de la materia: ";
+    ext.EscribirSlow(" ~~~~~~~~~~~~~~~ NUEVA MATERIA ~~~~~~~~~~~~~~~");
+    ext.Espacio();
+    ext.EscribirSlowParaIngresos("Ingrese el nombre de la materia: ");
     cin.getline(nombre,50);
-    cout<<"Ingrese el nombre del profesor: ";
+    ext.Mayusculas(nombre);
+    ext.EscribirSlowParaIngresos("Ingrese el nombre del profesor: ");
     cin.getline(profesor,50);
+    ext.Mayusculas(profesor);
+    while(!ext.VerificarSiEsTexto(profesor))
+    {
+        cin.getline(profesor,50);
+        ext.Mayusculas(profesor);
+    }
     dto.SetNombre(nombre);
     dto.SetProfesor(profesor);
     if(bl.Insertar(dto))
     {
-        cout<<endl<<"Se ha creado la nueva materia correctamente."<<endl;
+        ext.Espacio();
+        ext.EscribirSlow("Se ha creado la nueva materia correctamente.");
     }
     else
     {
-        cout<<endl<<"Error: No se ha creado la nueva materia correctamente."<<endl;
+        ext.Espacio();
+        ext.EscribirSlow("Error: No se ha creado la nueva materia correctamente.");
     }
 }
 
@@ -97,19 +112,24 @@ void clsMateriaView::Eliminar()
     {
         ext.LimpiarConsola();
         Listar();
-        cout<<endl<<"     *****     ELIMINAR MATERIA     *****"<<endl;
-        cout<<endl<<"Ingrese el ID de la materia a eliminar: ";
+        ext.Espacio();
+        ext.EscribirSlow(" ~~~~~~~~~~~~~~~ ELIMINAR MATERIA ~~~~~~~~~~~~~~~");
+        ext.Espacio();
+        ext.EscribirSlowParaIngresos("Ingrese el ID de la materia a eliminar: ");;
         cin.getline(ID_char,50);
-        if(ext.VerificarSiEsNumero(ID_char)){
+        if(ext.VerificarSiEsNumero(ID_char))
+        {
             int ID = atoi(ID_char);
             clsMateriaBL bl;
             if(bl.Eliminar(ID))
             {
-                cout<<endl<<"Se ha eliminado la materia correctamente."<<endl;
+                ext.Espacio();
+                ext.EscribirSlow("Se ha eliminado la materia correctamente.");
             }
             else
             {
-                cout<<endl<<"Error: No se ha eliminado la materia correctamente."<<endl;
+                ext.Espacio();
+                ext.EscribirSlow("Error: No se ha eliminado la materia correctamente.");
             }
         }
     }
@@ -125,8 +145,9 @@ void clsMateriaView::Modificar()
 
     ext.LimpiarConsola();
     Listar();
-    cout<<"     *****     MODIFICAR MATERIA     *****"<<endl;
-    cout<<endl<<"Ingrese el ID de la materia a modificar: ";
+    ext.EscribirSlow(" ~~~~~~~~~~~~~~~ MODIFICAR MATERIA ~~~~~~~~~~~~~~~");
+    ext.Espacio();
+    ext.EscribirSlowParaIngresos("Ingrese el ID de la materia a modificar: ");
     char ID_char[50];
     ID_char[0] = 'a';
     while(!ext.VerificarSiEsNumero(ID_char))
@@ -157,32 +178,46 @@ void clsMateriaView::Modificar()
                     dto.GetNombre(nombre);
                     char profesor[50];
                     dto.GetProfesor(profesor);
-                    cout<<endl<<"              ID: "<<dto.GetID()<<endl;
-                    cout<<"  Nombre antiguo: "<<nombre<<endl;
-                    cout<<"    Nombre nuevo: ";
+                    ext.EscribirSlowParaIngresos("              ID: ");
+                    cout<<dto.GetID()<<endl;
+                    ext.EscribirSlowParaIngresos("  Nombre antiguo: ");
+                    ext.EscribirSlow(nombre);
+                    ext.EscribirSlowParaIngresos("    Nombre nuevo: ");
                     cin.getline(nombre,50);
-                    cout<<"Profesor antiguo: "<<profesor<<endl;
-                    cout<<"  Profesor nuevo: ";
+                    ext.Mayusculas(nombre);
+                    ext.EscribirSlowParaIngresos("Profesor antiguo: ");
+                    ext.EscribirSlow(profesor);
+                    ext.EscribirSlowParaIngresos("  Profesor nuevo: ");
                     cin.getline(profesor,50);
+                    ext.Mayusculas(profesor);
+                    while(!ext.VerificarSiEsTexto(profesor))
+                    {
+                        cin.getline(profesor,50);
+                        ext.Mayusculas(profesor);
+                    }
                     dto.SetNombre(nombre);
                     dto.SetProfesor(profesor);
                     if(bl.Modificar(dto))
                     {
-                        cout<<endl<<"Se ha modificado la materia correctamente."<<endl;
+                        ext.Espacio();
+                        ext.EscribirSlow("Se ha modificado la materia correctamente.");
                     }
                     else
                     {
-                        cout<<endl<<"Error: No se ha modificado la materia."<<endl;
+                        ext.Espacio();
+                        ext.EscribirSlow("Error: No se ha modificado la materia.");
                     }
                 }
                 else
                 {
-                    cout<<endl<<"Error: No se ha encontrado el ID ingresado."<<endl;
+                    ext.Espacio();
+                    ext.EscribirSlow("Error: No se ha encontrado el ID ingresado.");
                 }
             }
             else
             {
-                cout<<endl<<"Error: Falla al leer listado de materias."<<endl;
+                ext.Espacio();
+                ext.EscribirSlow("Error: Falla al leer listado de materias.");
             }
         }
     }
@@ -194,10 +229,11 @@ void clsMateriaView::Mostrar(clsMateriaDTO dto)
     dto.GetNombre(nombre);
     char profesor[50];
     dto.GetProfesor(profesor);
-    cout<<"      ID: "<<dto.GetID()<<endl;
-    cout<<"  Nombre: "<<nombre<<endl;
-    cout<<"Profesor: "<<profesor<<endl;
-    cout<<"__________________________________________________"<<endl<<endl;
+    cout<<"| "<<setw(4)<<left<<dto.GetID()
+        <<" | "<<setw(30)<<left<<nombre
+        <<" | "<<setw(30)<<left<<profesor
+        <<" |"<<endl;
+    cout<<"|______|________________________________|________________________________|"<<endl;
 }
 
 void clsMateriaView::Listar()
@@ -209,11 +245,11 @@ void clsMateriaView::Listar()
     ext.LimpiarConsola();
     if(bl.Listar(dto))
     {
-        cout<<"     *****     LISTADO DE MATERIAS     *****"<<endl;
-        cout<<" ____ ________________________________ __________ "<<endl<<endl;
-        cout<<"|    |                                |                                |"<<endl;
-        cout<<"| ID | NOMBRE DE MATERIA              | NOMBRE DE PROFESOR         |"<<endl;
-        cout<<"|____|________________________________|__________|"<<endl<<endl;
+        ext._EscribirSlow(" ~~~~~~~~~~~~~~~~~~~~~~~~~ LISTADO DE MATERIAS ~~~~~~~~~~~~~~~~~~~~~~~~~~ ");
+        ext._EscribirSlow(" ______ ________________________________ ________________________________ ");
+        ext._EscribirSlow("|      |                                |                                |");
+        ext._EscribirSlow("|  ID  |       NOMBRE DE MATERIA        |      NOMBRE DE PROFESOR        |");
+        ext._EscribirSlow("|______|________________________________|________________________________|");
         for(int x=0;x < bl.Count(); ++x)
         {
             Mostrar(dto[x]);
@@ -221,7 +257,8 @@ void clsMateriaView::Listar()
     }
     else
     {
-        cout<<endl<<"Error: No se ha podido listar las materias."<<endl;
+        ext.Espacio();
+        ext.EscribirSlow("Error: No se ha podido listar las materias.");
     }
     free(dto);
 }

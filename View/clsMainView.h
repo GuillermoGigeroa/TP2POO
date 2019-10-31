@@ -11,6 +11,8 @@ class clsMainView
 {
     public:
         void Menu();
+        void Presentacion();
+        void Despedida();
 };
 
 #endif // CLSMAINVIEW_H
