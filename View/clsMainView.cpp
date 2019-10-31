@@ -1,9 +1,9 @@
 #include "clsMainView.h"
-#include "../EXTRA/Extra.h"
+#include "../HELPER/clsHelp.h"
 
 void clsMainView::Menu()
 {
-	Extra ext;
+	clsHelp ext;
     char opc[50];
     bool continuar = true;
     while(continuar)

@@ -1,19 +1,19 @@
-#include "Extra.h"
+#include "clsHelp.h"
 #include <cstdlib>
 #include <iostream>
 using namespace std;
 
-void Extra::LimpiarConsola()
+void clsHelp::LimpiarConsola()
 {
 	system("cls || clear");
 }
 
-void Extra::Pausa()
+void clsHelp::Pausa()
 {
 	cin.get();
 }
 
-bool Extra::VerificarSiEsNumero(char *esto)
+bool clsHelp::VerificarSiEsNumero(char *esto)
 {
     int x = 0;
     while(esto[x] != '\0')

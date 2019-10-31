@@ -1,7 +1,7 @@
-#ifndef EXTRA_H
-#define EXTRA_H
+#ifndef CLSHELP_H
+#define CLSHELP_H
 
-class Extra
+class clsHelp
 {
 	public:
         void LimpiarConsola();

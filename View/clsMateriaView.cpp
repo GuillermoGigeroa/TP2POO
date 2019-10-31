@@ -1,9 +1,9 @@
 #include "clsMateriaView.h"
-#include "../EXTRA/Extra.h"
+#include "../HELPER/clsHelp.h"
 
 void clsMateriaView::Menu()
 {
-    Extra ext;
+    clsHelp ext;
     char opc[50];
     bool continuar = true;
     while(continuar)
@@ -65,7 +65,7 @@ void clsMateriaView::Menu()
 
 void clsMateriaView::Insertar()
 {
-    Extra ext;
+    clsHelp ext;
     ext.LimpiarConsola();
     char nombre[50];
     char profesor[50];
@@ -90,7 +90,7 @@ void clsMateriaView::Insertar()
 
 void clsMateriaView::Eliminar()
 {
-    Extra ext;
+    clsHelp ext;
     char ID_char[50];
     ID_char[0] = 'a';
     while(!ext.VerificarSiEsNumero(ID_char))
@@ -118,7 +118,7 @@ void clsMateriaView::Eliminar()
 
 void clsMateriaView::Modificar()
 {
-    Extra ext;
+    clsHelp ext;
     clsMateriaBL bl;
     clsMateriaDTO dto;
     clsMateriaDTO *listaDto;
@@ -202,7 +202,7 @@ void clsMateriaView::Mostrar(clsMateriaDTO dto)
 
 void clsMateriaView::Listar()
 {
-    Extra ext;
+    clsHelp ext;
     clsMateriaDTO *dto;
     clsMateriaBL bl;
     dto = (clsMateriaDTO*)malloc(sizeof(clsMateriaDTO)*bl.Count());
