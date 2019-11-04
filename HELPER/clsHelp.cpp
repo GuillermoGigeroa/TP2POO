@@ -134,3 +134,64 @@ void clsHelp::Mayusculas(char *texto)
     strcpy(texto,aux);
     free(aux);
 }
+
+void clsHelp::Capitalizar(char *texto)
+{
+    char *aux;
+    int x = 0, conteo = 0;
+    while(texto[x] != '\0')
+    {
+        x++;
+        conteo++;
+    }
+    conteo++;
+    aux = (char*)malloc(sizeof(char)*conteo);
+    x = 0;
+    bool primeraLetra = true;
+    while(texto[x] != '\0')
+    {
+        aux[x] = texto[x];
+        if (texto[x-1] == ' ' || (texto[x-1] == 'I' && texto[x] == 'I'))
+            primeraLetra = true;
+        if (primeraLetra)
+        {
+            primeraLetra = false;
+            if(texto[x] >= 'a' && texto[x] <= 'z')
+            {
+                aux[x] = texto[x]-32;
+            }
+        }
+        else
+        {
+            if(texto[x] >= 'A' && texto[x] <= 'Z')
+            {
+                aux[x] = texto[x]+32;
+            }
+        }
+        x++;
+    }
+    aux[x] = '\0';
+    strcpy(texto,aux);
+    free(aux);
+}
+
+int clsHelp::strSub(char *cad, char *subCad)
+{
+    int i = 0, i2, iaux;
+    while (cad[i] != '\0')
+    {
+        i2=0;
+        iaux = i;
+        while(subCad[i2] == cad[iaux] && subCad[i2] != '\0')
+        {
+            i2++;
+            iaux++;
+        }
+        if (subCad[i2]=='\0')
+        {
+            return i;
+        }
+        i++;
+    }
+    return -1;
+}

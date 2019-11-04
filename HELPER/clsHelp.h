@@ -1,5 +1,7 @@
 #ifndef CLSHELP_H
 #define CLSHELP_H
+#include <string>
+using namespace std;
 
 class clsHelp
 {
@@ -13,8 +15,9 @@ class clsHelp
         void _EscribirSlow(char *texto);
         void MostrarLogo();
         void Mayusculas(char *texto);
+        void Capitalizar(char *texto);
         void Espacio();
-
+        int strSub(char *cad, char *subCad);
 };
 
 #endif

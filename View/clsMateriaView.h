@@ -16,6 +16,7 @@ class clsMateriaView
         void Eliminar();
         void Modificar();
         void Listar();
+        void BuscarListado();
         void Mostrar(clsMateriaDTO);
 };
 

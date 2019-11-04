@@ -1,6 +1,7 @@
 #include "clsMateriaView.h"
 #include "../HELPER/clsHelp.h"
 #include <iomanip>
+#include <string>
 
 void clsMateriaView::Menu()
 {
@@ -18,7 +19,7 @@ void clsMateriaView::Menu()
         ext._EscribirSlow("|     N - Nueva materia                        |");
         ext._EscribirSlow("|     E - Eliminar materia                     |");
         ext._EscribirSlow("|     M - Modificar materia                    |");
-        ext._EscribirSlow("|     L - Listar materias                      |");
+        ext._EscribirSlow("|     L - Buscar materias                      |");
         ext._EscribirSlow("|                                              |");
         ext._EscribirSlow("|     S - Salir                                |");
         ext._EscribirSlow("|______________________________________________|");
@@ -49,7 +50,7 @@ void clsMateriaView::Menu()
             case 'l':
             case 'L':
                 {
-                    Listar();
+                    BuscarListado();
                     ext.Pausa();
                 }break;
             case 's':
@@ -225,15 +226,18 @@ void clsMateriaView::Modificar()
 
 void clsMateriaView::Mostrar(clsMateriaDTO dto)
 {
+    clsHelp ext;
     char nombre[50];
     dto.GetNombre(nombre);
+    ext.Capitalizar(nombre);
     char profesor[50];
     dto.GetProfesor(profesor);
+    ext.Capitalizar(profesor);
     cout<<"| "<<setw(4)<<left<<dto.GetID()
-        <<" | "<<setw(30)<<left<<nombre
-        <<" | "<<setw(30)<<left<<profesor
+        <<" | "<<setw(42)<<left<<nombre
+        <<" | "<<setw(42)<<left<<profesor
         <<" |"<<endl;
-    cout<<"|______|________________________________|________________________________|"<<endl;
+    cout<<"|______|____________________________________________|____________________________________________|"<<endl;
 }
 
 void clsMateriaView::Listar()
@@ -246,13 +250,50 @@ void clsMateriaView::Listar()
     if(bl.Listar(dto))
     {
         ext._EscribirSlow(" ~~~~~~~~~~~~~~~~~~~~~~~~~ LISTADO DE MATERIAS ~~~~~~~~~~~~~~~~~~~~~~~~~~ ");
-        ext._EscribirSlow(" ______ ________________________________ ________________________________ ");
-        ext._EscribirSlow("|      |                                |                                |");
-        ext._EscribirSlow("|  ID  |       NOMBRE DE MATERIA        |      NOMBRE DE PROFESOR        |");
-        ext._EscribirSlow("|______|________________________________|________________________________|");
+        ext._EscribirSlow(" ______ ____________________________________________ ____________________________________________ ");
+        ext._EscribirSlow("|      |                                            |                                            |");
+        ext._EscribirSlow("|  ID  |            NOMBRE DE MATERIA               |              NOMBRE DE PROFESOR            |");
+        ext._EscribirSlow("|______|____________________________________________|____________________________________________|");
         for(int x=0;x < bl.Count(); ++x)
         {
             Mostrar(dto[x]);
+        }
+    }
+    else
+    {
+        ext.Espacio();
+        ext.EscribirSlow("Error: No se ha podido listar las materias.");
+    }
+    free(dto);
+}
+
+void clsMateriaView::BuscarListado()
+{
+    clsHelp ext;
+    ext.LimpiarConsola();
+    char loQueIngresaUsuario[50];
+    ext.EscribirSlow("Ingrese el nombre de la materia, o presione enter para listado completo: ");
+    cin.getline(loQueIngresaUsuario,50);
+    ext.Mayusculas(loQueIngresaUsuario);
+    ext.LimpiarConsola();
+    clsMateriaDTO *dto;
+    clsMateriaBL bl;
+    dto = (clsMateriaDTO*)malloc(sizeof(clsMateriaDTO)*bl.Count());
+    char nombre[50];
+    if(bl.Listar(dto))
+    {
+        ext._EscribirSlow("            ~~~~~~~~~~~~~~~~~~~~~~~~~ LISTADO DE MATERIAS ~~~~~~~~~~~~~~~~~~~~~~~~~~ ");
+        ext._EscribirSlow(" ______ ____________________________________________ ____________________________________________ ");
+        ext._EscribirSlow("|      |                                            |                                            |");
+        ext._EscribirSlow("|  ID  |            NOMBRE DE MATERIA               |              NOMBRE DE PROFESOR            |");
+        ext._EscribirSlow("|______|____________________________________________|____________________________________________|");
+        for(int x=0;x < bl.Count(); ++x)
+        {
+            dto[x].GetNombre(nombre);
+            if(ext.strSub(nombre,loQueIngresaUsuario) != -1)
+            {
+                Mostrar(dto[x]);
+            }
         }
     }
     else
