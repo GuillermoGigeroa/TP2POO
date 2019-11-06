@@ -154,7 +154,7 @@ void clsMateriaView::Modificar()
     while(!ext.VerificarSiEsNumero(ID_char))
     {
         cin.getline(ID_char,50);
-        if(ext.VerificarSiEsNumero(ID_char))
+        if(ext.VerificarSiEsNumero(ID_char) && ID_char[0] != '\0')
         {
             int ID;
             ID = atoi(ID_char);
@@ -171,7 +171,6 @@ void clsMateriaView::Modificar()
                         seEncontro = true;
                     }
                 }
-                free(listaDto);
 
                 if (seEncontro)
                 {
@@ -182,11 +181,13 @@ void clsMateriaView::Modificar()
                     ext.EscribirSlowParaIngresos("              ID: ");
                     cout<<dto.GetID()<<endl;
                     ext.EscribirSlowParaIngresos("  Nombre antiguo: ");
+                    ext.Capitalizar(nombre);
                     ext.EscribirSlow(nombre);
                     ext.EscribirSlowParaIngresos("    Nombre nuevo: ");
                     cin.getline(nombre,50);
                     ext.Mayusculas(nombre);
                     ext.EscribirSlowParaIngresos("Profesor antiguo: ");
+                    ext.Capitalizar(profesor);
                     ext.EscribirSlow(profesor);
                     ext.EscribirSlowParaIngresos("  Profesor nuevo: ");
                     cin.getline(profesor,50);
@@ -220,6 +221,7 @@ void clsMateriaView::Modificar()
                 ext.Espacio();
                 ext.EscribirSlow("Error: Falla al leer listado de materias.");
             }
+            free(listaDto);
         }
     }
 }
