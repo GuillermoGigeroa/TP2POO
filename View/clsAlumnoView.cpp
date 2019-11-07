@@ -167,7 +167,6 @@ void clsAlumnoView::Eliminar()
 
 void clsAlumnoView::Modificar()
 {
-    ///TODO Configurar para que funcione con clsAlumnos
     clsHelp ext;
     clsAlumnoBL bl;
     clsAlumnoDTO dto;
@@ -194,7 +193,7 @@ void clsAlumnoView::Modificar()
                 bool seEncontro = false;
                 for(int x = 0; x < bl.Count(); ++x)
                 {
-                    if(listaDto[x].GetID() == ID && !listaDto[x].GetEliminado())
+                    if(listaDto[x].GetLegajo() == legajo && !listaDto[x].GetEliminado())
                     {
                         dto.Copy(listaDto[x]);
                         seEncontro = true;
@@ -204,6 +203,9 @@ void clsAlumnoView::Modificar()
                 if (seEncontro)
                 {
                     char nombre[50];
+                    char anio_char[50];
+                    char mes_char[50];
+                    char dia_char[50];
                     dto.GetNombre(nombre);
                     ext.EscribirSlowParaIngresos("             Legajo: ");
                     cout<<dto.GetLegajo()<<endl;
@@ -219,9 +221,36 @@ void clsAlumnoView::Modificar()
                     }
                     ext.Mayusculas(nombre);
                     dto.SetNombre(nombre);
-                    ///TODO Hay que continuar con esto
-                    ext.EscribirSlowParaIngresos("Fecha de nacimiento: ");
 
+                    ext.EscribirSlowParaIngresos("Fecha de nacimiento antigua: ");
+                    ext.EscribirFecha(dto.GetDiaNacimiento(),dto.GetMesNacimiento(),dto.GetAnioNacimiento());
+                    ext.EscribirSlow("Nueva fecha de nacimiento: ");
+                    ext.EscribirSlowParaIngresos("Ingrese el anio de nacimiento alumno: ");
+                    cin.getline(anio_char,50);
+                    while(!ext.ValidarAnio(anio_char))
+                    {
+                        cin.getline(anio_char,50);
+                    }
+                    int anio = atoi(anio_char);
+                    dto.SetAnioNacimiento(anio);
+
+                    ext.EscribirSlowParaIngresos("Ingrese el mes de nacimiento alumno: ");
+                    cin.getline(mes_char,50);
+                    while(!ext.ValidarMes(mes_char))
+                    {
+                        cin.getline(mes_char,50);
+                    }
+                    int mes = atoi(mes_char);
+                    dto.SetMesNacimiento(mes);
+
+                    ext.EscribirSlowParaIngresos("Ingrese el dia de nacimiento alumno: ");
+                    cin.getline(dia_char,50);
+                    while(!ext.ValidarDia(dia_char))
+                    {
+                        cin.getline(dia_char,50);
+                    }
+                    int dia = atoi(dia_char);
+                    dto.SetDiaNacimiento(dia);
 
                     if(bl.Modificar(dto))
                     {
@@ -250,7 +279,7 @@ void clsAlumnoView::Modificar()
     }
 }
 
-void clsAlumnoView::Mostrar(clsMateriaDTO dto)
+void clsAlumnoView::Mostrar(clsAlumnoDTO dto)
 {
     ///TODO Configurar para que funcione con clsAlumnos
     clsHelp ext;
@@ -262,9 +291,9 @@ void clsAlumnoView::Mostrar(clsMateriaDTO dto)
     ext.Capitalizar(profesor);
     cout<<"| "<<setw(4)<<left<<dto.GetID()
         <<" | "<<setw(42)<<left<<nombre
-        <<" | "<<setw(42)<<left<<profesor
+        <<" | "<<setw(42)<<left<<
         <<" |"<<endl;
-    cout<<"|______|____________________________________________|____________________________________________|"<<endl;
+    cout<<"|__________|____________________________________________|____________________________________________|"<<endl;
 }
 
 void clsAlumnoView::Listar()
@@ -278,10 +307,10 @@ void clsAlumnoView::Listar()
     if(bl.Listar(dto))
     {
         ext._EscribirSlow(" ~~~~~~~~~~~~~~~~~~~~~~~~~ LISTADO DE MATERIAS ~~~~~~~~~~~~~~~~~~~~~~~~~~ ");
-        ext._EscribirSlow(" ______ ____________________________________________ ____________________________________________ ");
-        ext._EscribirSlow("|      |                                            |                                            |");
-        ext._EscribirSlow("|  ID  |            NOMBRE DE MATERIA               |              NOMBRE DE PROFESOR            |");
-        ext._EscribirSlow("|______|____________________________________________|____________________________________________|");
+        ext._EscribirSlow(" __________ ____________________________________________ ____________________________________________ ");
+        ext._EscribirSlow("|          |                                            |                                            |");
+        ext._EscribirSlow("|  LEGAJO  |             NOMBRE DE ALUMNO               |             FECHA DE NACIMIENTO            |");
+        ext._EscribirSlow("|__________|____________________________________________|____________________________________________|");
         for(int x=0;x < bl.Count(); ++x)
         {
             Mostrar(dto[x]);
