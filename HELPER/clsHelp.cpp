@@ -10,7 +10,7 @@ void clsHelp::LimpiarConsola()
 	system("cls || clear");
 }
 
-void clsHelp::_EscribirSlow(char *esteTexto){
+void clsHelp::_EscribirSlow(const char *esteTexto){
     int x = 0;
     while (esteTexto[x] != '\0')
     {
@@ -21,7 +21,7 @@ void clsHelp::_EscribirSlow(char *esteTexto){
     cout<<endl;
 }
 
-void clsHelp::EscribirSlow(char *esteTexto){
+void clsHelp::EscribirSlow(const char *esteTexto){
     int x = 0;
     while (esteTexto[x] != '\0')
     {
@@ -35,7 +35,7 @@ void clsHelp::EscribirSlow(char *esteTexto){
     cout<<endl;
 }
 
-void clsHelp::EscribirSlowParaIngresos(char *esteTexto){
+void clsHelp::EscribirSlowParaIngresos(const char *esteTexto){
     int x = 0;
     while (esteTexto[x] != '\0')
     {
@@ -194,4 +194,38 @@ int clsHelp::strSub(char *cad, char *subCad)
         i++;
     }
     return -1;
+}
+
+void clsHelp::ConfigurarConsola()
+{
+    system("color 0a");
+    system("mode con cols=130 lines=900");
+    LimpiarConsola();
+}
+
+bool clsHelp::ValidarAnio(char *esteNumero)
+{
+    if(!VerificarSiEsNumero(esteNumero))return false;
+    int numero = atoi(esteNumero);
+    if(numero < 1900) return false;
+    if(numero > 2019) return false;
+    return true;
+}
+
+bool clsHelp::ValidarMes(char *esteNumero)
+{
+    if(!VerificarSiEsNumero(esteNumero))return false;
+    int numero = atoi(esteNumero);
+    if(numero < 1) return false;
+    if(numero > 12) return false;
+    return true;
+}
+
+bool clsHelp::ValidarDia(char *esteNumero)
+{
+    if(!VerificarSiEsNumero(esteNumero))return false;
+    int numero = atoi(esteNumero);
+    if(numero < 1) return false;
+    if(numero > 31) return false;
+    return true;
 }

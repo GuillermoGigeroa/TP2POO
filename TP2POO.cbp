@@ -22,6 +22,8 @@
 					<Add directory="clsMateria" />
 					<Add directory="BL" />
 					<Add directory="View" />
+					<Add directory="DTO" />
+					<Add directory="DAO" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -40,6 +42,8 @@
 					<Add directory="clsMateria" />
 					<Add directory="BL" />
 					<Add directory="View" />
+					<Add directory="DTO" />
+					<Add directory="DAO" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -50,15 +54,23 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="BL/clsAlumnoBL.cpp" />
+		<Unit filename="BL/clsAlumnoBL.h" />
 		<Unit filename="BL/clsMateriaBL.cpp" />
 		<Unit filename="BL/clsMateriaBL.h" />
+		<Unit filename="DAO/clsAlumnoDAO.cpp" />
+		<Unit filename="DAO/clsAlumnoDAO.h" />
 		<Unit filename="DAO/clsMateriaDAO.cpp" />
 		<Unit filename="DAO/clsMateriaDAO.h" />
+		<Unit filename="DTO/clsAlumnoDTO.cpp" />
+		<Unit filename="DTO/clsAlumnoDTO.h" />
 		<Unit filename="DTO/clsMateriaDTO.cpp" />
 		<Unit filename="DTO/clsMateriaDTO.h" />
 		<Unit filename="HELPER/clsHelp.cpp" />
 		<Unit filename="HELPER/clsHelp.h" />
 		<Unit filename="TP Integrador 2.pdf" />
+		<Unit filename="View/clsAlumnoView.cpp" />
+		<Unit filename="View/clsAlumnoView.h" />
 		<Unit filename="View/clsMainView.cpp" />
 		<Unit filename="View/clsMainView.h" />
 		<Unit filename="View/clsMateriaView.cpp" />

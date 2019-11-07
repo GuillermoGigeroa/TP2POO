@@ -5,6 +5,8 @@
 using namespace std;
 int main()
 {
+    clsHelp ext;
+    ext.ConfigurarConsola();
     clsMainView view;
     view.Presentacion();
     view.Menu();

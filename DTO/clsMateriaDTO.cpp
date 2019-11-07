@@ -9,4 +9,5 @@ void clsMateriaDTO::Copy(clsMateriaDTO dto)
     this->SetNombre(nombre);
     dto.GetProfesor(profesor);
     this->SetProfesor(profesor);
+    this->SetEliminado(dto.GetEliminado());
 }
