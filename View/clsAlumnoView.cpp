@@ -167,197 +167,196 @@ void clsAlumnoView::Eliminar()
 
 void clsAlumnoView::Modificar()
 {
-    clsHelp ext;
-    clsAlumnoBL bl;
-    clsAlumnoDTO dto;
-    clsAlumnoDTO *listaDto;
-
-    ext.LimpiarConsola();
-    Listar();
-    ext.EscribirSlow(" ~~~~~~~~~~~~~~~ MODIFICAR MATERIA ~~~~~~~~~~~~~~~");
-    ext.Espacio();
-    ext.EscribirSlowParaIngresos("Ingrese el legajo del alumno a modificar: ");
-    char legajo_char[50];
-    legajo_char[0] = 'a';
-    while(!ext.VerificarSiEsNumero(legajo_char))
-    {
-        cin.getline(legajo_char,50);
-        if(ext.VerificarSiEsNumero(legajo_char) && legajo_char[0] != '\0')
-        {
-            int legajo;
-            legajo = atoi(legajo_char);
-
-            listaDto = (clsAlumnoDTO*)malloc(sizeof(clsAlumnoDTO)*bl.Count());
-            if(bl.Listar(listaDto))
-            {
-                bool seEncontro = false;
-                for(int x = 0; x < bl.Count(); ++x)
-                {
-                    if(listaDto[x].GetLegajo() == legajo && !listaDto[x].GetEliminado())
-                    {
-                        dto.Copy(listaDto[x]);
-                        seEncontro = true;
-                    }
-                }
-
-                if (seEncontro)
-                {
-                    char nombre[50];
-                    char anio_char[50];
-                    char mes_char[50];
-                    char dia_char[50];
-                    dto.GetNombre(nombre);
-                    ext.EscribirSlowParaIngresos("             Legajo: ");
-                    cout<<dto.GetLegajo()<<endl;
-                    ext.EscribirSlowParaIngresos("     Nombre antiguo: ");
-                    ext.Capitalizar(nombre);
-                    ext.EscribirSlow(nombre);
-                    ext.EscribirSlowParaIngresos("       Nombre nuevo: ");
-                    cin.getline(nombre,50);
-                    while(!ext.VerificarSiEsTexto(nombre))
-                    {
-                        cin.getline(nombre,50);
-                        ext.Mayusculas(nombre);
-                    }
-                    ext.Mayusculas(nombre);
-                    dto.SetNombre(nombre);
-
-                    ext.EscribirSlowParaIngresos("Fecha de nacimiento antigua: ");
-                    ext.EscribirFecha(dto.GetDiaNacimiento(),dto.GetMesNacimiento(),dto.GetAnioNacimiento());
-                    ext.EscribirSlow("Nueva fecha de nacimiento: ");
-                    ext.EscribirSlowParaIngresos("Ingrese el anio de nacimiento alumno: ");
-                    cin.getline(anio_char,50);
-                    while(!ext.ValidarAnio(anio_char))
-                    {
-                        cin.getline(anio_char,50);
-                    }
-                    int anio = atoi(anio_char);
-                    dto.SetAnioNacimiento(anio);
-
-                    ext.EscribirSlowParaIngresos("Ingrese el mes de nacimiento alumno: ");
-                    cin.getline(mes_char,50);
-                    while(!ext.ValidarMes(mes_char))
-                    {
-                        cin.getline(mes_char,50);
-                    }
-                    int mes = atoi(mes_char);
-                    dto.SetMesNacimiento(mes);
-
-                    ext.EscribirSlowParaIngresos("Ingrese el dia de nacimiento alumno: ");
-                    cin.getline(dia_char,50);
-                    while(!ext.ValidarDia(dia_char))
-                    {
-                        cin.getline(dia_char,50);
-                    }
-                    int dia = atoi(dia_char);
-                    dto.SetDiaNacimiento(dia);
-
-                    if(bl.Modificar(dto))
-                    {
-                        ext.Espacio();
-                        ext.EscribirSlow("Se ha modificado la materia correctamente.");
-                    }
-                    else
-                    {
-                        ext.Espacio();
-                        ext.EscribirSlow("Error: No se ha modificado la materia.");
-                    }
-                }
-                else
-                {
-                    ext.Espacio();
-                    ext.EscribirSlow("Error: No se ha encontrado el ID ingresado.");
-                }
-            }
-            else
-            {
-                ext.Espacio();
-                ext.EscribirSlow("Error: Falla al leer listado de materias.");
-            }
-            free(listaDto);
-        }
-    }
+//    clsHelp ext;
+//    clsAlumnoBL bl;
+//    clsAlumnoDTO dto;
+//    clsAlumnoDTO *listaDto;
+//
+//    ext.LimpiarConsola();
+//    Listar();
+//    ext.EscribirSlow(" ~~~~~~~~~~~~~~~ MODIFICAR MATERIA ~~~~~~~~~~~~~~~");
+//    ext.Espacio();
+//    ext.EscribirSlowParaIngresos("Ingrese el legajo del alumno a modificar: ");
+//    char legajo_char[50];
+//    legajo_char[0] = 'a';
+//    while(!ext.VerificarSiEsNumero(legajo_char))
+//    {
+//        cin.getline(legajo_char,50);
+//        if(ext.VerificarSiEsNumero(legajo_char) && legajo_char[0] != '\0')
+//        {
+//            int legajo;
+//            legajo = atoi(legajo_char);
+//
+//            listaDto = (clsAlumnoDTO*)malloc(sizeof(clsAlumnoDTO)*bl.Count());
+//            if(bl.Listar(listaDto))
+//            {
+//                bool seEncontro = false;
+//                for(int x = 0; x < bl.Count(); ++x)
+//                {
+//                    if(listaDto[x].GetLegajo() == legajo && !listaDto[x].GetEliminado())
+//                    {
+//                        dto.Copy(listaDto[x]);
+//                        seEncontro = true;
+//                    }
+//                }
+//
+//                if (seEncontro)
+//                {
+//                    char nombre[50];
+//                    char anio_char[50];
+//                    char mes_char[50];
+//                    char dia_char[50];
+//                    dto.GetNombre(nombre);
+//                    ext.EscribirSlowParaIngresos("             Legajo: ");
+//                    cout<<dto.GetLegajo()<<endl;
+//                    ext.EscribirSlowParaIngresos("     Nombre antiguo: ");
+//                    ext.Capitalizar(nombre);
+//                    ext.EscribirSlow(nombre);
+//                    ext.EscribirSlowParaIngresos("       Nombre nuevo: ");
+//                    cin.getline(nombre,50);
+//                    while(!ext.VerificarSiEsTexto(nombre))
+//                    {
+//                        cin.getline(nombre,50);
+//                        ext.Mayusculas(nombre);
+//                    }
+//                    ext.Mayusculas(nombre);
+//                    dto.SetNombre(nombre);
+//
+//                    ext.EscribirSlowParaIngresos("Fecha de nacimiento antigua: ");
+//                    ext.EscribirFecha(dto.GetDiaNacimiento(),dto.GetMesNacimiento(),dto.GetAnioNacimiento());
+//                    ext.EscribirSlow("Nueva fecha de nacimiento: ");
+//                    ext.EscribirSlowParaIngresos("Ingrese el anio de nacimiento alumno: ");
+//                    cin.getline(anio_char,50);
+//                    while(!ext.ValidarAnio(anio_char))
+//                    {
+//                        cin.getline(anio_char,50);
+//                    }
+//                    int anio = atoi(anio_char);
+//                    dto.SetAnioNacimiento(anio);
+//
+//                    ext.EscribirSlowParaIngresos("Ingrese el mes de nacimiento alumno: ");
+//                    cin.getline(mes_char,50);
+//                    while(!ext.ValidarMes(mes_char))
+//                    {
+//                        cin.getline(mes_char,50);
+//                    }
+//                    int mes = atoi(mes_char);
+//                    dto.SetMesNacimiento(mes);
+//
+//                    ext.EscribirSlowParaIngresos("Ingrese el dia de nacimiento alumno: ");
+//                    cin.getline(dia_char,50);
+//                    while(!ext.ValidarDia(dia_char))
+//                    {
+//                        cin.getline(dia_char,50);
+//                    }
+//                    int dia = atoi(dia_char);
+//                    dto.SetDiaNacimiento(dia);
+//
+//                    if(bl.Modificar(dto))
+//                    {
+//                        ext.Espacio();
+//                        ext.EscribirSlow("Se ha modificado la materia correctamente.");
+//                    }
+//                    else
+//                    {
+//                        ext.Espacio();
+//                        ext.EscribirSlow("Error: No se ha modificado la materia.");
+//                    }
+//                }
+//                else
+//                {
+//                    ext.Espacio();
+//                    ext.EscribirSlow("Error: No se ha encontrado el ID ingresado.");
+//                }
+//            }
+//            else
+//            {
+//                ext.Espacio();
+//                ext.EscribirSlow("Error: Falla al leer listado de materias.");
+//            }
+//            free(listaDto);
+//        }
+//    }
 }
 
 void clsAlumnoView::Mostrar(clsAlumnoDTO dto)
 {
-    ///TODO Configurar para que funcione con clsAlumnos
-    clsHelp ext;
-    char nombre[50];
-    dto.GetNombre(nombre);
-    ext.Capitalizar(nombre);
-    char profesor[50];
-    dto.GetProfesor(profesor);
-    ext.Capitalizar(profesor);
-    cout<<"| "<<setw(4)<<left<<dto.GetID()
-        <<" | "<<setw(42)<<left<<nombre
-        <<" | "<<setw(42)<<left<<
-        <<" |"<<endl;
-    cout<<"|__________|____________________________________________|____________________________________________|"<<endl;
+//    ///TODO Configurar para que funcione con clsAlumnos
+//    clsHelp ext;
+//    char nombre[50];
+//    dto.GetNombre(nombre);
+//    ext.Capitalizar(nombre);
+//    cout<<"| "<<setw(8)<<left<<dto.GetID()
+//        <<" | "<<setw(42)<<left<<nombre
+//        <<" | "<<setw(42)<<left<<
+//        <<" |"<<endl;
+//    cout<<"|__________|____________________________________________|____________________________________________|"<<endl;
 }
 
 void clsAlumnoView::Listar()
 {
-    ///TODO Configurar para que funcione con clsAlumnos
-    clsHelp ext;
-    clsMateriaDTO *dto;
-    clsMateriaBL bl;
-    dto = (clsMateriaDTO*)malloc(sizeof(clsMateriaDTO)*bl.Count());
-    ext.LimpiarConsola();
-    if(bl.Listar(dto))
-    {
-        ext._EscribirSlow(" ~~~~~~~~~~~~~~~~~~~~~~~~~ LISTADO DE MATERIAS ~~~~~~~~~~~~~~~~~~~~~~~~~~ ");
-        ext._EscribirSlow(" __________ ____________________________________________ ____________________________________________ ");
-        ext._EscribirSlow("|          |                                            |                                            |");
-        ext._EscribirSlow("|  LEGAJO  |             NOMBRE DE ALUMNO               |             FECHA DE NACIMIENTO            |");
-        ext._EscribirSlow("|__________|____________________________________________|____________________________________________|");
-        for(int x=0;x < bl.Count(); ++x)
-        {
-            Mostrar(dto[x]);
-        }
-    }
-    else
-    {
-        ext.Espacio();
-        ext.EscribirSlow("Error: No se ha podido listar las materias.");
-    }
-    free(dto);
+//
+//    ///TODO Configurar para que funcione con clsAlumnos
+//    clsHelp ext;
+//    clsMateriaDTO *dto;
+//    clsMateriaBL bl;
+//    dto = (clsMateriaDTO*)malloc(sizeof(clsMateriaDTO)*bl.Count());
+//    ext.LimpiarConsola();
+//    if(bl.Listar(dto))
+//    {
+//        ext._EscribirSlow(" ~~~~~~~~~~~~~~~~~~~~~~~~~ LISTADO DE MATERIAS ~~~~~~~~~~~~~~~~~~~~~~~~~~ ");
+//        ext._EscribirSlow(" __________ ____________________________________________ ____________________________________________ ");
+//        ext._EscribirSlow("|          |                                            |                                            |");
+//        ext._EscribirSlow("|  LEGAJO  |             NOMBRE DE ALUMNO               |             FECHA DE NACIMIENTO            |");
+//        ext._EscribirSlow("|__________|____________________________________________|____________________________________________|");
+//        for(int x=0;x < bl.Count(); ++x)
+//        {
+//            Mostrar(dto[x]);
+//        }
+//    }
+//    else
+//    {
+//        ext.Espacio();
+//        ext.EscribirSlow("Error: No se ha podido listar las materias.");
+//    }
+//    free(dto);
 }
 
 void clsAlumnoView::BuscarListado()
 {
-    ///TODO Configurar para que funcione con clsAlumnos
-    clsHelp ext;
-    ext.LimpiarConsola();
-    char loQueIngresaUsuario[50];
-    ext.EscribirSlow("Ingrese el nombre de la materia, o presione enter para listado completo: ");
-    cin.getline(loQueIngresaUsuario,50);
-    ext.Mayusculas(loQueIngresaUsuario);
-    ext.LimpiarConsola();
-    clsMateriaDTO *dto;
-    clsMateriaBL bl;
-    dto = (clsMateriaDTO*)malloc(sizeof(clsMateriaDTO)*bl.Count());
-    char nombre[50];
-    if(bl.Listar(dto))
-    {
-        ext._EscribirSlow("            ~~~~~~~~~~~~~~~~~~~~~~~~~ LISTADO DE MATERIAS ~~~~~~~~~~~~~~~~~~~~~~~~~~ ");
-        ext._EscribirSlow(" ______ ____________________________________________ ____________________________________________ ");
-        ext._EscribirSlow("|      |                                            |                                            |");
-        ext._EscribirSlow("|  ID  |            NOMBRE DE MATERIA               |              NOMBRE DE PROFESOR            |");
-        ext._EscribirSlow("|______|____________________________________________|____________________________________________|");
-        for(int x=0;x < bl.Count(); ++x)
-        {
-            dto[x].GetNombre(nombre);
-            if(ext.strSub(nombre,loQueIngresaUsuario) != -1)
-            {
-                Mostrar(dto[x]);
-            }
-        }
-    }
-    else
-    {
-        ext.Espacio();
-        ext.EscribirSlow("Error: No se ha podido listar las materias.");
-    }
-    free(dto);
+//
+//    ///TODO Configurar para que funcione con clsAlumnos
+//    clsHelp ext;
+//    ext.LimpiarConsola();
+//    char loQueIngresaUsuario[50];
+//    ext.EscribirSlow("Ingrese el nombre de la materia, o presione enter para listado completo: ");
+//    cin.getline(loQueIngresaUsuario,50);
+//    ext.Mayusculas(loQueIngresaUsuario);
+//    ext.LimpiarConsola();
+//    clsMateriaDTO *dto;
+//    clsMateriaBL bl;
+//    dto = (clsMateriaDTO*)malloc(sizeof(clsMateriaDTO)*bl.Count());
+//    char nombre[50];
+//    if(bl.Listar(dto))
+//    {
+//        ext._EscribirSlow("            ~~~~~~~~~~~~~~~~~~~~~~~~~ LISTADO DE MATERIAS ~~~~~~~~~~~~~~~~~~~~~~~~~~ ");
+//        ext._EscribirSlow(" ______ ____________________________________________ ____________________________________________ ");
+//        ext._EscribirSlow("|      |                                            |                                            |");
+//        ext._EscribirSlow("|  ID  |            NOMBRE DE MATERIA               |              NOMBRE DE PROFESOR            |");
+//        ext._EscribirSlow("|______|____________________________________________|____________________________________________|");
+//        for(int x=0;x < bl.Count(); ++x)
+//        {
+//            dto[x].GetNombre(nombre);
+//            if(ext.strSub(nombre,loQueIngresaUsuario) != -1)
+//            {
+//                Mostrar(dto[x]);
+//            }
+//        }
+//    }
+//    else
+//    {
+//        ext.Espacio();
+//        ext.EscribirSlow("Error: No se ha podido listar las materias.");
+//    }
+//    free(dto);
 }
