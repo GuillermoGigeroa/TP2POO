@@ -62,10 +62,14 @@
 		<Unit filename="DAO/clsAlumnoDAO.h" />
 		<Unit filename="DAO/clsMateriaDAO.cpp" />
 		<Unit filename="DAO/clsMateriaDAO.h" />
+		<Unit filename="DAO/clsMxA_DAO.cpp" />
+		<Unit filename="DAO/clsMxA_DAO.h" />
 		<Unit filename="DTO/clsAlumnoDTO.cpp" />
 		<Unit filename="DTO/clsAlumnoDTO.h" />
 		<Unit filename="DTO/clsMateriaDTO.cpp" />
 		<Unit filename="DTO/clsMateriaDTO.h" />
+		<Unit filename="DTO/clsMxA_DTO.cpp" />
+		<Unit filename="DTO/clsMxA_DTO.h" />
 		<Unit filename="HELPER/clsHelp.cpp" />
 		<Unit filename="HELPER/clsHelp.h" />
 		<Unit filename="TP Integrador 2.pdf" />
