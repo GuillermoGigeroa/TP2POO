@@ -22,7 +22,7 @@ class clsHelp
         bool ValidarAnio(char *esteNumero);
         bool ValidarMes(char *esteNumero);
         bool ValidarDia(char *esteNumero);
-        void EscribirFecha(int dia, int mes, int anio, char *salida);
+        void EscribirFecha(int dia, int mes, int anio);
 };
 
 #endif

@@ -199,7 +199,7 @@ int clsHelp::strSub(char *cad, char *subCad)
 void clsHelp::ConfigurarConsola()
 {
     system("color 0a");
-    system("mode con cols=130 lines=900");
+    system("mode con cols=130 lines=40");
     LimpiarConsola();
 }
 
