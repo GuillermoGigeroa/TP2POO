@@ -224,6 +224,7 @@ void clsAlumnoView::Modificar()
 
                     ext.EscribirSlowParaIngresos("Fecha de nacimiento antigua: ");
                     ext.EscribirFecha(dto.GetDiaNacimiento(),dto.GetMesNacimiento(),dto.GetAnioNacimiento());
+                    ext.Espacio();
                     ext.EscribirSlow("Nueva fecha de nacimiento: ");
                     ext.EscribirSlowParaIngresos("Ingrese el anio de nacimiento alumno: ");
                     cin.getline(anio_char,50);
@@ -287,10 +288,9 @@ void clsAlumnoView::Mostrar(clsAlumnoDTO dto)
     ext.Capitalizar(nombre);
     cout<<"| "<<setw(8)<<left<<dto.GetLegajo()
         <<" | "<<setw(42)<<left<<nombre
-        <<" | "<<setw(16)<<left<<dto.GetDiaNacimiento()
-        <<'\\'<<dto.GetMesNacimiento()
-        <<'\\'<<dto.GetAnioNacimiento()
-        <<setw(16)<<left<<""
+        <<" | "<<setw(16)<<left<<"";
+        ext.EscribirFecha(dto.GetDiaNacimiento(),dto.GetMesNacimiento(),dto.GetAnioNacimiento());
+    cout<<setw(16)<<left<<""
         <<" |"<<endl;
     cout<<"|__________|____________________________________________|____________________________________________|"<<endl;
 }
@@ -329,20 +329,20 @@ void clsAlumnoView::BuscarListado()
     clsHelp ext;
     ext.LimpiarConsola();
     char loQueIngresaUsuario[50];
-    ext.EscribirSlow("Ingrese el nombre de la materia, o presione enter para listado completo: ");
+    ext.EscribirSlow("Ingrese el nombre del alumno, o presione enter para listado completo: ");
     cin.getline(loQueIngresaUsuario,50);
     ext.Mayusculas(loQueIngresaUsuario);
     ext.LimpiarConsola();
-    clsMateriaDTO *dto;
-    clsMateriaBL bl;
-    dto = (clsMateriaDTO*)malloc(sizeof(clsMateriaDTO)*bl.Count());
+    clsAlumnoDTO *dto;
+    clsAlumnoBL bl;
+    dto = (clsAlumnoDTO*)malloc(sizeof(clsAlumnoDTO)*bl.Count());
     char nombre[50];
     if(bl.Listar(dto))
     {
         ext._EscribirSlow("            ~~~~~~~~~~~~~~~~~~~~~~~~~ LISTADO DE MATERIAS ~~~~~~~~~~~~~~~~~~~~~~~~~~ ");
         ext._EscribirSlow(" __________ ____________________________________________ ____________________________________________ ");
         ext._EscribirSlow("|          |                                            |                                            |");
-        ext._EscribirSlow("|  LEGAJO  |            NOMBRE DE MATERIA               |              NOMBRE DE PROFESOR            |");
+        ext._EscribirSlow("|  LEGAJO  |            NOMBRE DEL ALUMNO               |             FECHA DE NACIMIENTO            |");
         ext._EscribirSlow("|__________|____________________________________________|____________________________________________|");
         for(int x=0;x < bl.Count(); ++x)
         {
@@ -356,7 +356,7 @@ void clsAlumnoView::BuscarListado()
     else
     {
         ext.Espacio();
-        ext.EscribirSlow("Error: No se ha podido listar las materias.");
+        ext.EscribirSlow("Error: No se ha podido listar los alumnos.");
     }
     free(dto);
 }

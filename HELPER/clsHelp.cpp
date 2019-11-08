@@ -229,3 +229,26 @@ bool clsHelp::ValidarDia(char *esteNumero)
     if(numero > 31) return false;
     return true;
 }
+
+void clsHelp::EscribirFecha(int dia, int mes, int anio)
+{
+    if(dia<10)
+    {
+        cout<<'0'<<dia;
+    }
+    else
+    {
+        cout<<dia;
+    }
+    cout<<'\\';
+    if(mes<10)
+    {
+        cout<<'0'<<mes;
+    }
+    else
+    {
+        cout<<mes;
+    }
+    cout<<'\\';
+    cout<<anio;
+}
