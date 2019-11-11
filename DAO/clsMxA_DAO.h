@@ -7,7 +7,7 @@ class clsMxA_DAO
 {
     public:
         bool Insertar(clsMxA_DTO);
-        bool Eliminar(int);
+        bool Eliminar(int ID_Materia, int Legajo);
         bool Modificar(clsMxA_DTO);
         bool Listar(clsMxA_DTO *);
         int Count();

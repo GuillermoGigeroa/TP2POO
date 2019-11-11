@@ -12,9 +12,8 @@ bool clsMxA_DAO::Insertar(clsMxA_DTO dto)
     return true;
 }
 
-bool clsMxA_DAO::Eliminar(int ID)
+bool clsMxA_DAO::Eliminar(int ID_Materia, int Legajo)
 {
-    //TODO Modificar para que funcione con clsMxA
     FILE *archivo;
     int pos = 0;
     clsMxA_DTO dto;
@@ -22,13 +21,13 @@ bool clsMxA_DAO::Eliminar(int ID)
     archivo = fopen(ARCHIVO_MXA,"rb+");
     if(archivo == NULL)
         return false;
-    while(fread(&dto,sizeof(clsMateriaDTO),1,archivo))
+    while(fread(&dto,sizeof(clsMxA_DTO),1,archivo))
     {
-        if(dto.GetID()==ID && !dto.GetEliminado())
+        if(dto.GetID_Materia()==ID_Materia && dto.GetLegajo()==Legajo && !dto.GetEliminado())
         {
             dto.SetEliminado(true);
-            fseek(archivo,sizeof(clsMateriaDTO)*pos,SEEK_SET);
-            fwrite(&dto,sizeof(clsMateriaDTO),1,archivo);
+            fseek(archivo,sizeof(clsMxA_DTO)*pos,SEEK_SET);
+            fwrite(&dto,sizeof(clsMxA_DTO),1,archivo);
             fclose(archivo);
             return true;
         }
@@ -38,22 +37,21 @@ bool clsMxA_DAO::Eliminar(int ID)
     return false;
 }
 
-bool clsMxA_DAO::Modificar(clsMateriaDTO dto)
+bool clsMxA_DAO::Modificar(clsMxA_DTO dto)
 {
-    //TODO Modificar para que funcione con clsMxA
     FILE *archivo;
     int pos = 0;
-    clsMateriaDTO dto_archivo;
+    clsMxA_DTO dto_archivo;
     CrearArchivoMxASiNoExiste();
     archivo = fopen(ARCHIVO_MXA,"rb+");
     if(archivo == NULL)
         return false;
-    while(fread(&dto_archivo,sizeof(clsMateriaDTO),1,archivo))
+    while(fread(&dto_archivo,sizeof(clsMxA_DTO),1,archivo))
     {
-        if(dto_archivo.GetID()==dto.GetID() && !dto.GetEliminado())
+        if(dto_archivo.GetID_Materia()==dto.GetID_Materia() && dto_archivo.GetLegajo()==dto.GetLegajo() && !dto.GetEliminado())
         {
-            fseek(archivo,sizeof(clsMateriaDTO)*pos,SEEK_SET);
-            fwrite(&dto,sizeof(clsMateriaDTO),1,archivo);
+            fseek(archivo,sizeof(clsMxA_DTO)*pos,SEEK_SET);
+            fwrite(&dto,sizeof(clsMxA_DTO),1,archivo);
             fclose(archivo);
             return true;
         }
@@ -63,17 +61,16 @@ bool clsMxA_DAO::Modificar(clsMateriaDTO dto)
     return false;
 }
 
-bool clsMxA_DAO::Listar(clsMateriaDTO *dto)
+bool clsMxA_DAO::Listar(clsMxA_DTO *dto)
 {
-    //TODO Modificar para que funcione con clsMxA
     FILE *archivo;
     int pos = 0;
-    clsMateriaDTO dto_archivo;
+    clsMxA_DTO dto_archivo;
     CrearArchivoMxASiNoExiste();
     archivo = fopen(ARCHIVO_MXA,"rb");
     if(archivo == NULL)
         return false;
-    while(fread(&dto_archivo,sizeof(clsMateriaDTO),1,archivo))
+    while(fread(&dto_archivo,sizeof(clsMxA_DTO),1,archivo))
     {
         if (!dto_archivo.GetEliminado())
         {
@@ -86,15 +83,14 @@ bool clsMxA_DAO::Listar(clsMateriaDTO *dto)
 
 int clsMxA_DAO::Count()
 {
-    //TODO Modificar para que funcione con clsMxA
     FILE *archivo;
     int cantidad = 0;
-    clsMateriaDTO dto;
+    clsMxA_DTO dto;
     CrearArchivoMxASiNoExiste();
     archivo = fopen(ARCHIVO_MXA,"rb");
     if(archivo == NULL)
         return 0;
-    while(fread(&dto,sizeof(clsMateriaDTO),1,archivo))
+    while(fread(&dto,sizeof(clsMxA_DTO),1,archivo))
     {
         if(!dto.GetEliminado())
         {
@@ -107,15 +103,14 @@ int clsMxA_DAO::Count()
 
 int clsMxA_DAO::GeneradorDeID()
 {
-    //TODO Modificar para que funcione con clsMxA
     FILE *archivo;
     int cantidad = 0;
-    clsMateriaDTO dto;
+    clsMxA_DTO dto;
     CrearArchivoMxASiNoExiste();
     archivo = fopen(ARCHIVO_MXA,"rb");
     if(archivo == NULL)
         return 0;
-    while(fread(&dto,sizeof(clsMateriaDTO),1,archivo))
+    while(fread(&dto,sizeof(clsMxA_DTO),1,archivo))
     {
         cantidad++;
     }

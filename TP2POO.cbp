@@ -58,6 +58,8 @@
 		<Unit filename="BL/clsAlumnoBL.h" />
 		<Unit filename="BL/clsMateriaBL.cpp" />
 		<Unit filename="BL/clsMateriaBL.h" />
+		<Unit filename="BL/clsMxA_BL.cpp" />
+		<Unit filename="BL/clsMxA_BL.h" />
 		<Unit filename="DAO/clsAlumnoDAO.cpp" />
 		<Unit filename="DAO/clsAlumnoDAO.h" />
 		<Unit filename="DAO/clsMateriaDAO.cpp" />
@@ -79,6 +81,8 @@
 		<Unit filename="View/clsMainView.h" />
 		<Unit filename="View/clsMateriaView.cpp" />
 		<Unit filename="View/clsMateriaView.h" />
+		<Unit filename="View/clsMxA_View.cpp" />
+		<Unit filename="View/clsMxA_View.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
