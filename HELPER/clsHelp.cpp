@@ -113,22 +113,16 @@ void clsHelp::Mayusculas(char *texto)
 {
     char *aux;
     int x = 0, conteo = 0;
-    while(texto[x] != '\0')
-    {
-        x++;
-        conteo++;
-    }
+    while(texto[conteo++] != '\0'){}
     conteo++;
     aux = (char*)malloc(sizeof(char)*conteo);
-    x = 0;
-    while(texto[x] != '\0')
+    while(texto[x++] != '\0')
     {
         aux[x] = texto[x];
         if(texto[x] >= 'a' && texto[x] <= 'z')
         {
             aux[x] = texto[x]-32;
         }
-        x++;
     }
     aux[x] = '\0';
     strcpy(texto,aux);
@@ -139,16 +133,11 @@ void clsHelp::Capitalizar(char *texto)
 {
     char *aux;
     int x = 0, conteo = 0;
-    while(texto[x] != '\0')
-    {
-        x++;
-        conteo++;
-    }
+    bool primeraLetra = true;
+    while(texto[conteo++] != '\0'){}
     conteo++;
     aux = (char*)malloc(sizeof(char)*conteo);
-    x = 0;
-    bool primeraLetra = true;
-    while(texto[x] != '\0')
+    while(texto[x++] != '\0')
     {
         aux[x] = texto[x];
         if (texto[x-1] == ' ' || (texto[x-1] == 'I' && texto[x] == 'I'))
@@ -168,7 +157,6 @@ void clsHelp::Capitalizar(char *texto)
                 aux[x] = texto[x]+32;
             }
         }
-        x++;
     }
     aux[x] = '\0';
     strcpy(texto,aux);

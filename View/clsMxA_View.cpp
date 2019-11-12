@@ -39,19 +39,19 @@ void clsMxA_View::Menu()
             case 'e':
             case 'E':
                 {
-                    Eliminar();
+//                    Eliminar();
                     ext.Pausa();
                 }break;
             case 'M':
             case 'm':
                 {
-                    BuscarListadoMXA();
+//                    BuscarListadoMXA();
                     ext.Pausa();
                 }break;
             case 'a':
             case 'A':
                 {
-                    BuscarListadoAXM();
+//                    BuscarListadoAXM();
                     ext.Pausa();
                 }break;
             case 's':
