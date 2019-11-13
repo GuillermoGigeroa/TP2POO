@@ -16,7 +16,7 @@ class clsMxA_View
         void BuscarListadoMXA();
         void BuscarListadoAXM();
         void MostrarMXA(clsMxA_DTO);
-        void MostrarAXM(clsMxA_DTO, bool mostrarIDMateria);
+        void MostrarAXM(clsMxA_DTO&, bool mostrarIDMateria);
     private:
         void MostrarListadoAXM(int legajo);
 };

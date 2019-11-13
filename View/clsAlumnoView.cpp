@@ -102,7 +102,7 @@ void clsAlumnoView::Insertar()
     }
     dto.SetNombre(nombre);
 
-    ext.EscribirSlowParaIngresos("Ingrese el anio de nacimiento alumno: ");
+    ext.EscribirSlowParaIngresos("Ingrese el anio de nacimiento alumno (en numero): ");
     cin.getline(anio_char,50);
     while(!ext.ValidarAnio(anio_char))
     {
@@ -111,7 +111,7 @@ void clsAlumnoView::Insertar()
     int anio = atoi(anio_char);
     dto.SetAnioNacimiento(anio);
 
-    ext.EscribirSlowParaIngresos("Ingrese el mes de nacimiento alumno: ");
+    ext.EscribirSlowParaIngresos("Ingrese el mes de nacimiento alumno (en numero): ");
     cin.getline(mes_char,50);
     while(!ext.ValidarMes(mes_char))
     {
@@ -120,7 +120,7 @@ void clsAlumnoView::Insertar()
     int mes = atoi(mes_char);
     dto.SetMesNacimiento(mes);
 
-    ext.EscribirSlowParaIngresos("Ingrese el dia de nacimiento alumno: ");
+    ext.EscribirSlowParaIngresos("Ingrese el dia de nacimiento alumno (en numero): ");
     cin.getline(dia_char,50);
     while(!ext.ValidarDia(dia_char))
     {
@@ -241,7 +241,7 @@ void clsAlumnoView::Modificar()
                     ext.EscribirFecha(dto.GetDiaNacimiento(),dto.GetMesNacimiento(),dto.GetAnioNacimiento());
                     ext.Espacio();
                     ext.EscribirSlow("Nueva fecha de nacimiento: ");
-                    ext.EscribirSlowParaIngresos("Ingrese el anio de nacimiento alumno: ");
+                    ext.EscribirSlowParaIngresos("Ingrese el anio de nacimiento alumno (en numero): ");
                     cin.getline(anio_char,50);
                     while(!ext.ValidarAnio(anio_char))
                     {
@@ -250,7 +250,7 @@ void clsAlumnoView::Modificar()
                     int anio = atoi(anio_char);
                     dto.SetAnioNacimiento(anio);
 
-                    ext.EscribirSlowParaIngresos("Ingrese el mes de nacimiento alumno: ");
+                    ext.EscribirSlowParaIngresos("Ingrese el mes de nacimiento alumno (en numero): ");
                     cin.getline(mes_char,50);
                     while(!ext.ValidarMes(mes_char))
                     {
@@ -259,7 +259,7 @@ void clsAlumnoView::Modificar()
                     int mes = atoi(mes_char);
                     dto.SetMesNacimiento(mes);
 
-                    ext.EscribirSlowParaIngresos("Ingrese el dia de nacimiento alumno: ");
+                    ext.EscribirSlowParaIngresos("Ingrese el dia de nacimiento alumno (en numero): ");
                     cin.getline(dia_char,50);
                     while(!ext.ValidarDia(dia_char))
                     {

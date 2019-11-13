@@ -285,7 +285,7 @@ void clsMenuAyuda::MenuMXA()
             case 'N':
                 {
                     ext.LimpiarConsola();
-                    ext.EscribirSlow("En este menu podes asignar alumnosa las materias.");
+                    ext.EscribirSlow("En este menu podes asignar alumnos a las materias.");
                     ext.Espacio();
                     ext.EscribirSlow("Solamente necesitas ingresar en pantalla los datos:");
                     ext.EscribirSlow("> ID de la materia");

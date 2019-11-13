@@ -15,7 +15,6 @@ class clsMxA_DAO
         int Count();
         bool CargarVectorDinamico(clsMxA_DTO *listaDto);
         bool GuardarEnDisco(clsMxA_DTO *listaDto);
-    private:
         void CrearArchivoMxASiNoExiste();
 };
 

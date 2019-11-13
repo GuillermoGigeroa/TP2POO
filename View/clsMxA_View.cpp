@@ -204,7 +204,7 @@ void clsMxA_View::MostrarMXA(clsMxA_DTO dto)
     }
 }
 
-void clsMxA_View::MostrarAXM(clsMxA_DTO dto, bool mostrarIDMateria)
+void clsMxA_View::MostrarAXM(clsMxA_DTO &dto, bool mostrarIDMateria)
 {
     if(!dto.GetEliminado())
     {
