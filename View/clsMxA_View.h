@@ -12,10 +12,13 @@ class clsMxA_View
     public:
         void Menu();
         void Insertar();
-        void Eliminar();
+        void EliminarAlumnoDeMateria();
         void BuscarListadoMXA();
         void BuscarListadoAXM();
-        void Mostrar(clsMxA_DTO);
+        void MostrarMXA(clsMxA_DTO);
+        void MostrarAXM(clsMxA_DTO, bool mostrarIDMateria);
+    private:
+        void MostrarListadoAXM(int legajo);
 };
 
 #endif // CLSMXA_VIEW_H

@@ -11,6 +11,8 @@ class clsAlumnoBL
         bool Modificar(clsAlumnoDTO);
         bool Listar(clsAlumnoDTO*);
         int Count();
+        bool BuscarNombreAlumno(int legajo, char *outNombre);
+        bool VerificarSiYaExiste(clsAlumnoDTO);
 };
 
 #endif // CLSALUMNOBL_H

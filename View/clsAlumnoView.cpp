@@ -119,16 +119,22 @@ void clsAlumnoView::Insertar()
     }
     int dia = atoi(dia_char);
     dto.SetDiaNacimiento(dia);
-
-    if(bl.Insertar(dto))
+    if(!bl.VerificarSiYaExiste(dto))
     {
-        ext.Espacio();
-        ext.EscribirSlow("Se ha creado el nuevo alumno correctamente.");
+        if(bl.Insertar(dto))
+        {
+            ext.Espacio();
+            ext.EscribirSlow("Se ha creado el nuevo alumno correctamente.");
+        }
+        else
+        {
+            ext.Espacio();
+            ext.EscribirSlow("Error: No se ha creado el nuevo alumno correctamente.");
+        }
     }
     else
     {
-        ext.Espacio();
-        ext.EscribirSlow("Error: No se ha creado el nuevo alumno correctamente.");
+        ext.EscribirSlow("Error: Alumno ya fue ingresado a sistema.");
     }
 }
 
@@ -182,7 +188,7 @@ void clsAlumnoView::Modificar()
     while(!ext.VerificarSiEsNumero(legajo_char))
     {
         cin.getline(legajo_char,50);
-        if(ext.VerificarSiEsNumero(legajo_char) && legajo_char[0] != '\0')
+        if(ext.VerificarSiEsNumero(legajo_char))
         {
             int legajo;
             legajo = atoi(legajo_char);
@@ -304,7 +310,7 @@ void clsAlumnoView::Listar()
     ext.LimpiarConsola();
     if(bl.Listar(dto))
     {
-        ext._EscribirSlow("           ~~~~~~~~~~~~~~~~~~~~~~~~~ LISTADO DE MATERIAS ~~~~~~~~~~~~~~~~~~~~~~~~~~ ");
+        ext._EscribirSlow("           ~~~~~~~~~~~~~~~~~~~~~~~~~ LISTADO DE ALUMNOS ~~~~~~~~~~~~~~~~~~~~~~~~~~ ");
         ext._EscribirSlow(" __________ ____________________________________________ ____________________________________________ ");
         ext._EscribirSlow("|          |                                            |                                            |");
         ext._EscribirSlow("|  LEGAJO  |             NOMBRE DE ALUMNO               |             FECHA DE NACIMIENTO            |");
@@ -324,8 +330,6 @@ void clsAlumnoView::Listar()
 
 void clsAlumnoView::BuscarListado()
 {
-
-    ///TODO Configurar para que funcione con clsAlumnos
     clsHelp ext;
     ext.LimpiarConsola();
     char loQueIngresaUsuario[50];

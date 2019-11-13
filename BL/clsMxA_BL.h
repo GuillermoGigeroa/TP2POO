@@ -7,10 +7,13 @@ class clsMxA_BL
 {
     public:
         bool Insertar(clsMxA_DTO);
-        bool Eliminar(int ID_Materia, int Legajo);
+        bool EliminarAlumnoDeMateria(int ID, int legajo);
+        bool EliminarPorLegajo(int Legajo);
+        bool EliminarPorIdMateria(int ID);
         bool Modificar(clsMxA_DTO);
         bool Listar(clsMxA_DTO*);
         int Count();
+        bool VerificarSiYaExiste(clsMxA_DTO);
 };
 
 #endif // CLSMXA_BL_H

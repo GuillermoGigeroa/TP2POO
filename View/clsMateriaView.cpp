@@ -92,15 +92,22 @@ void clsMateriaView::Insertar()
     }
     dto.SetNombre(nombre);
     dto.SetProfesor(profesor);
-    if(bl.Insertar(dto))
+    if(!bl.VerificarSiYaExiste(dto))
     {
-        ext.Espacio();
-        ext.EscribirSlow("Se ha creado la nueva materia correctamente.");
+        if(bl.Insertar(dto))
+        {
+            ext.Espacio();
+            ext.EscribirSlow("Se ha creado la nueva materia correctamente.");
+        }
+        else
+        {
+            ext.Espacio();
+            ext.EscribirSlow("Error: No se ha creado la nueva materia correctamente.");
+        }
     }
     else
     {
-        ext.Espacio();
-        ext.EscribirSlow("Error: No se ha creado la nueva materia correctamente.");
+        ext.EscribirSlow("Error: Materia ya ha sido ingresada al sistema.");
     }
 }
 

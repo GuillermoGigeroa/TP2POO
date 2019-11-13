@@ -5,6 +5,7 @@
 #include <iomanip>
 #include "clsMateriaView.h"
 #include "clsAlumnoView.h"
+#include "clsMxA_View.h"
 using namespace std;
 
 

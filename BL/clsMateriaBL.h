@@ -11,6 +11,8 @@ class clsMateriaBL
         bool Modificar(clsMateriaDTO);
         bool Listar(clsMateriaDTO*);
         int Count();
+        bool BuscarNombreMateria(int ID, char *outNombre);
+        bool VerificarSiYaExiste(clsMateriaDTO);
 };
 
 #endif // CLSMATERIABL_H

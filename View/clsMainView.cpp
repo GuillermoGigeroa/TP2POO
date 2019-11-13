@@ -16,6 +16,7 @@ void clsMainView::Menu()
         ext._EscribirSlow("|                                              |");
         ext._EscribirSlow("|     M - Materias                             |");
         ext._EscribirSlow("|     A - Alumnos                              |");
+        ext._EscribirSlow("|     X - Materias por alumnos                 |");
         ext._EscribirSlow("|                                              |");
         ext._EscribirSlow("|     S - Salir                                |");
         ext._EscribirSlow("|______________________________________________|");
@@ -36,6 +37,12 @@ void clsMainView::Menu()
                 {
                     clsAlumnoView aluView;
                     aluView.Menu();
+                }break;
+            case 'x':
+            case 'X':
+                {
+                    clsMxA_View mxaView;
+                    mxaView.Menu();
                 }break;
             case 's':
             case 'S':

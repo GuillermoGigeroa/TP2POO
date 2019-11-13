@@ -98,6 +98,7 @@ bool clsHelp::VerificarSiEsNumero(char *esto)
 bool clsHelp::VerificarSiEsTexto(char *esto)
 {
     int x = 0;
+    if(esto[0] == '\0' || esto[0] == ' ') return false;
     while(esto[x] != '\0')
     {
         if (!((esto[x] >= 'a' && esto[x] <= 'z')||(esto[x] >= 'A' && esto[x] <= 'Z')||esto[x] == ' '))
@@ -113,16 +114,20 @@ void clsHelp::Mayusculas(char *texto)
 {
     char *aux;
     int x = 0, conteo = 0;
-    while(texto[conteo++] != '\0'){}
+    while(texto[conteo] != '\0')
+    {
+        conteo++;
+    }
     conteo++;
     aux = (char*)malloc(sizeof(char)*conteo);
-    while(texto[x++] != '\0')
+    while(texto[x] != '\0')
     {
         aux[x] = texto[x];
         if(texto[x] >= 'a' && texto[x] <= 'z')
         {
             aux[x] = texto[x]-32;
         }
+        x++;
     }
     aux[x] = '\0';
     strcpy(texto,aux);
@@ -134,10 +139,13 @@ void clsHelp::Capitalizar(char *texto)
     char *aux;
     int x = 0, conteo = 0;
     bool primeraLetra = true;
-    while(texto[conteo++] != '\0'){}
+    while(texto[conteo] != '\0')
+    {
+        conteo++;
+    }
     conteo++;
     aux = (char*)malloc(sizeof(char)*conteo);
-    while(texto[x++] != '\0')
+    while(texto[x] != '\0')
     {
         aux[x] = texto[x];
         if (texto[x-1] == ' ' || (texto[x-1] == 'I' && texto[x] == 'I'))
@@ -157,6 +165,7 @@ void clsHelp::Capitalizar(char *texto)
                 aux[x] = texto[x]+32;
             }
         }
+        x++;
     }
     aux[x] = '\0';
     strcpy(texto,aux);
