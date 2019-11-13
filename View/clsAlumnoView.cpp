@@ -1,5 +1,6 @@
 #include "clsAlumnoView.h"
 #include "../HELPER/clsHelp.h"
+#include "../HELPER/clsMenuAyuda.h"
 #include <iomanip>
 #include <string>
 
@@ -21,6 +22,8 @@ void clsAlumnoView::Menu()
         ext._EscribirSlow("|     E - Eliminar alumno                      |");
         ext._EscribirSlow("|     M - Modificar alumno                     |");
         ext._EscribirSlow("|     L - Buscar alumnos                       |");
+        ext._EscribirSlow("|                                              |");
+        ext._EscribirSlow("|     H - Ayuda                                |");
         ext._EscribirSlow("|                                              |");
         ext._EscribirSlow("|     S - Salir                                |");
         ext._EscribirSlow("|______________________________________________|");
@@ -54,6 +57,12 @@ void clsAlumnoView::Menu()
                     BuscarListado();
                     ext.Pausa();
                 }break;
+            case 'h':
+            case 'H':
+                {
+                    clsMenuAyuda mayuda;
+                    mayuda.MenuPrincipal();
+                }break;
             case 's':
             case 'S':
                 {
@@ -83,7 +92,7 @@ void clsAlumnoView::Insertar()
 
     ext.EscribirSlow(" ~~~~~~~~~~~~~~~ NUEVO ALUMNO ~~~~~~~~~~~~~~~");
     ext.Espacio();
-    ext.EscribirSlowParaIngresos("Ingrese el nombre del alumno: ");
+    ext.EscribirSlowParaIngresos("Ingrese el nombre completo del alumno: ");
     cin.getline(nombre,50);
     ext.Mayusculas(nombre);
     while(!ext.VerificarSiEsTexto(nombre))
@@ -148,7 +157,7 @@ void clsAlumnoView::Eliminar()
         ext.LimpiarConsola();
         Listar();
         ext.Espacio();
-        ext.EscribirSlow(" ~~~~~~~~~~~~~~~ ELIMINAR MATERIA ~~~~~~~~~~~~~~~");
+        ext.EscribirSlow(" ~~~~~~~~~~~~~~~ ELIMINAR ALUMNO  ~~~~~~~~~~~~~~~");
         ext.Espacio();
         ext.EscribirSlowParaIngresos("Ingrese el legajo del alumno a eliminar: ");;
         cin.getline(legajo_char,50);
@@ -180,7 +189,7 @@ void clsAlumnoView::Modificar()
 
     ext.LimpiarConsola();
     Listar();
-    ext.EscribirSlow(" ~~~~~~~~~~~~~~~ MODIFICAR MATERIA ~~~~~~~~~~~~~~~");
+    ext.EscribirSlow(" ~~~~~~~~~~~~~~~ MODIFICAR ALUMNO  ~~~~~~~~~~~~~~~");
     ext.Espacio();
     ext.EscribirSlowParaIngresos("Ingrese el legajo del alumno a modificar: ");
     char legajo_char[50];

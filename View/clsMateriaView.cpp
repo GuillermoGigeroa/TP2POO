@@ -1,5 +1,6 @@
 #include "clsMateriaView.h"
 #include "../HELPER/clsHelp.h"
+#include "../HELPER/clsMenuAyuda.h"
 #include <iomanip>
 #include <string>
 
@@ -20,6 +21,8 @@ void clsMateriaView::Menu()
         ext._EscribirSlow("|     E - Eliminar materia                     |");
         ext._EscribirSlow("|     M - Modificar materia                    |");
         ext._EscribirSlow("|     L - Buscar materias                      |");
+        ext._EscribirSlow("|                                              |");
+        ext._EscribirSlow("|     H - Ayuda                                |");
         ext._EscribirSlow("|                                              |");
         ext._EscribirSlow("|     S - Salir                                |");
         ext._EscribirSlow("|______________________________________________|");
@@ -52,6 +55,12 @@ void clsMateriaView::Menu()
                 {
                     BuscarListado();
                     ext.Pausa();
+                }break;
+            case 'h':
+            case 'H':
+                {
+                    clsMenuAyuda mayuda;
+                    mayuda.MenuPrincipal();
                 }break;
             case 's':
             case 'S':

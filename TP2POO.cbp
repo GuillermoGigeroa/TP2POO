@@ -24,6 +24,7 @@
 					<Add directory="View" />
 					<Add directory="DTO" />
 					<Add directory="DAO" />
+					<Add directory="HELPER" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -44,6 +45,7 @@
 					<Add directory="View" />
 					<Add directory="DTO" />
 					<Add directory="DAO" />
+					<Add directory="HELPER" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -74,6 +76,8 @@
 		<Unit filename="DTO/clsMxA_DTO.h" />
 		<Unit filename="HELPER/clsHelp.cpp" />
 		<Unit filename="HELPER/clsHelp.h" />
+		<Unit filename="HELPER/clsMenuAyuda.cpp" />
+		<Unit filename="HELPER/clsMenuAyuda.h" />
 		<Unit filename="TP Integrador 2.pdf" />
 		<Unit filename="View/clsAlumnoView.cpp" />
 		<Unit filename="View/clsAlumnoView.h" />

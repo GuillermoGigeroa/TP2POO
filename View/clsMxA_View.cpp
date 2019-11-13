@@ -2,6 +2,7 @@
 #include "clsMateriaView.h"
 #include "clsAlumnoView.h"
 #include "../HELPER/clsHelp.h"
+#include "../HELPER/clsMenuAyuda.h"
 #include <iomanip>
 #include <string>
 
@@ -22,6 +23,8 @@ void clsMxA_View::Menu()
         ext._EscribirSlow("|     E - Eliminar alumno de una materia       |");
         ext._EscribirSlow("|     M - Listado de materias por alumno       |");
         ext._EscribirSlow("|     A - Listado de alumnos por materia       |");
+        ext._EscribirSlow("|                                              |");
+        ext._EscribirSlow("|     H - Ayuda                                |");
         ext._EscribirSlow("|                                              |");
         ext._EscribirSlow("|     S - Salir                                |");
         ext._EscribirSlow("|______________________________________________|");
@@ -54,6 +57,12 @@ void clsMxA_View::Menu()
                 {
                     BuscarListadoAXM();
                     ext.Pausa();
+                }break;
+            case 'h':
+            case 'H':
+                {
+                    clsMenuAyuda mayuda;
+                    mayuda.MenuPrincipal();
                 }break;
             case 's':
             case 'S':

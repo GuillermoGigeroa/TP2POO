@@ -1,5 +1,6 @@
 #include "clsMainView.h"
 #include "../HELPER/clsHelp.h"
+#include "../HELPER/clsMenuAyuda.h"
 
 void clsMainView::Menu()
 {
@@ -17,6 +18,8 @@ void clsMainView::Menu()
         ext._EscribirSlow("|     M - Materias                             |");
         ext._EscribirSlow("|     A - Alumnos                              |");
         ext._EscribirSlow("|     X - Materias por alumnos                 |");
+        ext._EscribirSlow("|                                              |");
+        ext._EscribirSlow("|     H - Ayuda                                |");
         ext._EscribirSlow("|                                              |");
         ext._EscribirSlow("|     S - Salir                                |");
         ext._EscribirSlow("|______________________________________________|");
@@ -43,6 +46,12 @@ void clsMainView::Menu()
                 {
                     clsMxA_View mxaView;
                     mxaView.Menu();
+                }break;
+            case 'h':
+            case 'H':
+                {
+                    clsMenuAyuda mayuda;
+                    mayuda.MenuPrincipal();
                 }break;
             case 's':
             case 'S':
